@@ -1,4 +1,4 @@
-package com.example.studenthandbookhaui;
+package com.example.studenthandbookhaui.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,9 +19,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new ScheduleFragment();
-            case 1:
                 return new HomeFragment();
+            case 1:
+                return new ScheduleFragment();
             case 2:
                 return new UserFragment();
             default:

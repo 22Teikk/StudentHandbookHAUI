@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Onboarding">
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:background="#F5FBFF"
+        android:layout_height="@dimen/_250sdp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/onboarding" />
+    </RelativeLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:id="@+id/viewSupported"
+        android:layout_marginBottom="@dimen/_30sdp"
+        app:layout_constraintBottom_toBottomOf="@id/relative"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingStart="@dimen/_30sdp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/cus_background_white"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewSupported"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_marginTop="32dp"
+            android:gravity="center_horizontal|top"
+            android:lineSpacingExtra="3sp"
+            android:padding="@dimen/_5sdp"
+            android:text="Task Manager"
+            android:textColor="#00394C"
+            android:textSize="24sp"
+            android:translationY="-1.26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="32dp"
+            android:text="Create a unique emotional story that describes better than words"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@drawable/cus_button"
+            android:onClick="getStarted"
+            android:text="Get Started"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
