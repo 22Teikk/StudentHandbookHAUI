@@ -5,6 +5,10 @@ plugins {
 android {
     compileSdk 33
 
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
     defaultConfig {
         applicationId "com.example.studenthandbookhaui"
         minSdk 21
