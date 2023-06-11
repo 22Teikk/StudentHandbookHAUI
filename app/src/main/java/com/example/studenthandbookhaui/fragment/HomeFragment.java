@@ -1,13 +1,21 @@
 package com.example.studenthandbookhaui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.studenthandbookhaui.E_Learning;
+import com.example.studenthandbookhaui.Finance;
+import com.example.studenthandbookhaui.HomePage;
 import com.example.studenthandbookhaui.R;
+import com.example.studenthandbookhaui.Result;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,11 +63,57 @@ public class HomeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    Intent intent;
+    ImageView btnNotification;
+    LinearLayout btnCourses, btnResult, btnFinance, btnLearning;
+    EditText edtNotes;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        getWidget(view);
+        btnNotification.setOnClickListener(new Excute());
+        btnLearning.setOnClickListener(new Excute());
+        btnFinance.setOnClickListener(new Excute());
+        btnResult.setOnClickListener(new Excute());
+        btnCourses.setOnClickListener(new Excute());
+        return view;
+    }
+
+    private void getWidget(View view){
+        btnNotification = view.findViewById(R.id.btnNotification);
+        btnCourses = view.findViewById(R.id.layoutCourse);
+        btnResult = view.findViewById(R.id.layoutResult);
+        btnFinance = view.findViewById(R.id.layoutFinance);
+        btnLearning = view.findViewById(R.id.layoutELearning);
+        edtNotes = view.findViewById(R.id.edtNotes);
+    }
+
+    private class Excute implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.btnNotification:
+
+                    break;
+                case R.id.layoutCourse:
+
+                    break;
+                case R.id.layoutResult:
+                    intent = new Intent(getActivity(), Result.class);
+                    startActivity(intent);
+                    break;
+                case R.id.layoutFinance:
+                    intent = new Intent(getActivity(), Finance.class);
+                    startActivity(intent);
+                    break;
+                case R.id.layoutELearning:
+                    intent = new Intent(getActivity(), E_Learning.class);
+                    startActivity(intent);
+                    break;
+            }
+        }
     }
 }
