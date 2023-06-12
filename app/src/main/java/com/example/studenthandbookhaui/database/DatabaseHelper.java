@@ -3,6 +3,8 @@ package com.example.studenthandbookhaui.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Debug;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,11 +19,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.i("DatabaseHelper", "DatabaseHelper");
         this.context = context;
+//        context.deleteDatabase(DATABASE_NAME);
+        getReadableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.i("DatabaseHelper", "onCreate");
         try {
             InputStream inputStream = context.getAssets().open("database.sql");
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -33,8 +39,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 stringBuilder.append("\n");
             }
             String createScript = stringBuilder.toString();
-            db.execSQL(createScript);
+            Log.i("DatabaseHelper", createScript);
             bufferedReader.close();
+            String[] statements = createScript.split(";");
+
+            for (String statement : statements) {
+                Log.i("DatabaseHelper", statement);
+                if (statement.trim().length() > 0)
+                    db.execSQL(statement);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,6 +55,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // TODO Auto-generated method stub
+        onCreate(db);
     }
 }

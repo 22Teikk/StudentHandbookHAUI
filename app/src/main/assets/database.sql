@@ -1,5 +1,17 @@
-PRAGMA foreign_keys=OFF;
-BEGIN TRANSACTION;
+drop table if exists notifications;
+drop table if exists user_notifications;
+drop table if exists articles;
+drop table if exists class_instructors;
+drop table if exists classes;
+drop table if exists course;
+drop table if exists enrollments;
+drop table if exists instructors;
+drop table if exists lectures;
+drop table if exists lessons;
+drop table if exists notes;
+drop table if exists quizzes;
+drop table if exists users;
+
 CREATE TABLE users
 (
     id           INTEGER PRIMARY KEY,
@@ -381,4 +393,3 @@ CREATE TABLE user_notifications(
     created_at TEXT
 
 );
-COMMIT;
