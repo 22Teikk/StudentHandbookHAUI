@@ -4,10 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.studenthandbookhaui.R;
+import com.example.studenthandbookhaui.database.DatabaseHelper;
+import com.example.studenthandbookhaui.database.model.CourseClass;
+import com.example.studenthandbookhaui.database.repository.ClassRepository;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,33 +23,20 @@ import com.example.studenthandbookhaui.R;
  */
 public class ScheduleFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private DatabaseHelper databaseHelper;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ClassRepository classRepository;
+    private Button selectedButton;
+
+    private ArrayAdapter<CourseClass> classAdapter;
 
     public ScheduleFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ScheduleFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ScheduleFragment newInstance(String param1, String param2) {
+    public static ScheduleFragment newInstance() {
         ScheduleFragment fragment = new ScheduleFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,10 +44,8 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        databaseHelper = new DatabaseHelper(getContext());
+        classRepository = new ClassRepository(databaseHelper);
     }
 
     @Override
@@ -61,5 +53,27 @@ public class ScheduleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_schedule, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        int[] ids = {R.id.mondayBtn, R.id.tuesdayBtn, R.id.wednesdayBtn, R.id.thursdayBtn, R.id.fridayBtn,R.id.saturdayBtn,R.id.sundayBtn};
+
+        for(int id : ids) {
+            view.findViewById(id).setOnClickListener((v)->{onSelectDay(v);});
+        }
+
+
+        classAdapter = new ArrayAdapter<>(getContext(), R.layout.schedule_class_item, classRepository.find());
+    }
+
+    public void onSelectDay(View v) {
+        if (selectedButton != null) {
+            selectedButton.setBackgroundResource(R.drawable.cus_button_secondary);
+        }
+        selectedButton = (Button) v;
+        v.setBackgroundResource(R.drawable.cus_button);
     }
 }

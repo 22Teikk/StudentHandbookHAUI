@@ -4,37 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_secondary"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageHeader"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_250sdp"
-        android:scaleType="fitXY"
+    <androidx.cardview.widget.CardView
+        android:layout_width="113dp"
+        android:layout_height="113dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/haui" />
-    <View
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:id="@+id/viewSupported"
-        android:layout_marginBottom="@dimen/_30sdp"
-        app:layout_constraintBottom_toBottomOf="@id/imageHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        android:paddingStart="@dimen/_30sdp"
-        />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/imageHeader"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/haui" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".45" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/cus_background_white"
+        android:paddingTop="@dimen/_30sdp"
         android:paddingStart="@dimen/_30sdp"
         android:paddingEnd="@dimen/_30sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewSupported"
+        app:layout_constraintTop_toTopOf="@+id/guideLine"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
@@ -85,6 +93,7 @@
             android:layout_marginEnd="@dimen/_16sdp"
             android:background="@drawable/cus_button"
             android:text="Login"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chkSave" />
@@ -105,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Remeber ID"
+            android:text="Remember ID"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtStudentID" />
     </androidx.constraintlayout.widget.ConstraintLayout>
