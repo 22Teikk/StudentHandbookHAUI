@@ -8,7 +8,7 @@ import com.example.studenthandbookhaui.database.model.CourseClass;
 
 public class ClassRepository extends BaseRepository<CourseClass> {
     public ClassRepository(DatabaseHelper dbHelper) {
-        super(dbHelper, "class");
+        super(dbHelper, "classes");
     }
 
     @Override
