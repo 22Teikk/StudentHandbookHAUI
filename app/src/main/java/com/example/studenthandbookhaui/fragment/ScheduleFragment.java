@@ -66,7 +66,7 @@ public class ScheduleFragment extends Fragment {
         }
 
 
-        classAdapter = new ArrayAdapter<>(getContext(), R.layout.schedule_class_item, classRepository.find());
+//        classAdapter = new ArrayAdapter<>(getContext(), R.layout.schedule_class_item, classRepository.find());
     }
 
     public void onSelectDay(View v) {

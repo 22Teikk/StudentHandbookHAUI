@@ -8,18 +8,28 @@
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/cus_background_white.xml" value="0.124" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/cus_button.xml" value="0.124" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/cus_edittext.xml" value="0.1" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/cus_item.xml" value="0.137" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/cus_note.xml" value="0.1" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/cus_shape.xml" value="0.1" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/header.xml" value="0.1335" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/header_home_bgr.xml" value="0.1335" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/ic_notifications.xml" value="0.1" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/drawable/login_background.xml" value="0.1335" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/activity_elearning.xml" value="0.21342592592592594" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/activity_finance.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/activity_home_page.xml" value="0.1" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/activity_onboarding.xml" value="0.16052631578947368" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/activity_payment.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/activity_result.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/fragment_schedule.xml" value="0.152" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/fragment_user.xml" value="0.1" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/lv_classes.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/lv_finance.xml" value="0.225" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/lv_payment.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/lv_result.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/layout/result_lv.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/menu/bottom_navigation.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/Teikk's laptop/Desktop/HAUI/Android_Haui/StudentHandbookHAUI/app/src/main/res/menu/notification.xml" value="0.1" />
       </map>

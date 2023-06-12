@@ -14,6 +14,12 @@
         android:theme="@style/Theme.StudentHandbookHAUI"
         tools:targetApi="31">
         <activity
+            android:name=".Course"
+            android:exported="false" />
+        <activity
+            android:name=".Result_Detail"
+            android:exported="false" />
+        <activity
             android:name=".Payment"
             android:exported="false" />
         <activity

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.studenthandbookhaui.Course;
 import com.example.studenthandbookhaui.E_Learning;
 import com.example.studenthandbookhaui.Finance;
 import com.example.studenthandbookhaui.HomePage;
@@ -99,7 +100,8 @@ public class HomeFragment extends Fragment {
 
                     break;
                 case R.id.layoutCourse:
-
+                    intent = new Intent(getActivity(), Course.class);
+                    startActivity(intent);
                     break;
                 case R.id.layoutResult:
                     intent = new Intent(getActivity(), Result.class);
