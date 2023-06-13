@@ -72,8 +72,8 @@ public class ScheduleFragment extends Fragment {
 
         selectedButton = view.findViewById(R.id.mondayBtn);
 
-        classAdapter = new ScheduleAdapter(getContext(), classRepository.find());
-        listView.setAdapter(classAdapter);
+//        classAdapter = new ScheduleAdapter(getContext(), classRepository.find());
+//        listView.setAdapter(classAdapter);
     }
 
     public void onSelectDay(View v) {
