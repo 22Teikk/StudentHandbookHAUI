@@ -21,7 +21,7 @@ public abstract class BaseRepository<T> {
     protected abstract T getItemFromCursor(Cursor cursor);
     protected abstract ContentValues getContentValues(T item);
 
-    public T findById(long id, String where) {
+    public T findById(long id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE id = " + id, null);
         T item = null;

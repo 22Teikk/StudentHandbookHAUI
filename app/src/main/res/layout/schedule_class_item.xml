@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="0dp"
+    android:paddingBottom="@dimen/_4sdp"
     android:backgroundTint="@color/gray">
 
     <LinearLayout
@@ -13,7 +15,8 @@
         android:orientation="vertical"
         android:paddingStart="@dimen/_16sdp"
         android:paddingTop="@dimen/_8sdp"
-        android:paddingEnd="@dimen/_10sdp">
+        android:paddingEnd="@dimen/_10sdp"
+        >
 
         <TextView
             android:id="@+id/schedule_time"

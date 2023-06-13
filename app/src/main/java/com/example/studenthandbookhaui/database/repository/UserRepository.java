@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.studenthandbookhaui.database.DatabaseHelper;
-import com.example.studenthandbookhaui.database.model.Course;
+import com.example.studenthandbookhaui.database.model.ClassModel;
 import com.example.studenthandbookhaui.database.model.User;
 
 import java.text.SimpleDateFormat;
@@ -61,5 +61,24 @@ public class UserRepository extends BaseRepository<User> {
         } else {
             return null;
         }
+    }
+
+    public ArrayList<ClassModel> getClassByStudentCode(String studentCode, String dayOfWeek) {
+        ArrayList<ClassModel> list = new ArrayList<>();
+        Cursor cursor = rawQuery("select day_in_week, time_in_day, room, class_code, cl.course_id from users inner join enrollments er on users.id = er.user_id\n" +
+                "inner join classes cl on er.class_id = cl.id\n" +
+                "where day_in_week like '%" + dayOfWeek + "%'\n" +
+                "and users.student_code = 1");
+        while (cursor.moveToNext()) {
+            ClassModel classModel = new ClassModel();
+            classModel.setDayInWeek(cursor.getString(0));
+            classModel.setTimeInDay(cursor.getString(1));
+            classModel.setRoom(cursor.getString(2));
+            classModel.setRoom(cursor.getString(3));
+            classModel.setCourseId(cursor.getString(4));
+            list.add(classModel);
+        }
+
+        return list;
     }
 }
