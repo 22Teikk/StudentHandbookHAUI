@@ -4,20 +4,20 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.studenthandbookhaui.database.DatabaseHelper;
-import com.example.studenthandbookhaui.database.model.CourseClass;
+import com.example.studenthandbookhaui.database.model.Course;
 
-public class ClassRepository extends BaseRepository<CourseClass> {
-    public ClassRepository(DatabaseHelper dbHelper) {
-        super(dbHelper, "classes");
+public class CourseRepository extends BaseRepository<Course> {
+    public CourseRepository(DatabaseHelper dbHelper) {
+        super(dbHelper, "courses");
     }
 
     @Override
-    protected CourseClass getItemFromCursor(Cursor cursor) {
-        CourseClass courseClass = new CourseClass();
+    protected Course getItemFromCursor(Cursor cursor) {
+        Course courseClass = new Course();
 
         courseClass.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
         courseClass.setName(cursor.getString(cursor.getColumnIndexOrThrow("name")));
-        courseClass.setCourseCode(cursor.getString(cursor.getColumnIndexOrThrow("course_code")));
+        courseClass.setCourseCode(cursor.getString(cursor.getColumnIndexOrThrow("")));
         courseClass.setCourseLoadPractical(cursor.getInt(cursor.getColumnIndexOrThrow("course_load_practical")));
         courseClass.setCourseLoadTheoretical(cursor.getInt(cursor.getColumnIndexOrThrow("course_load_theoretical")));
 
@@ -25,7 +25,7 @@ public class ClassRepository extends BaseRepository<CourseClass> {
     }
 
     @Override
-    protected ContentValues getContentValues(CourseClass item) {
+    protected ContentValues getContentValues(Course item) {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("name", item.getName());

@@ -135,7 +135,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constraint">
         <ListView
-            android:id="@+id/classLv"
+            android:id="@+id/lvSchedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/schedule_class_item"

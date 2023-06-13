@@ -6,15 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.studenthandbookhaui.R;
+import com.example.studenthandbookhaui.adapter.ScheduleAdapter;
 import com.example.studenthandbookhaui.database.DatabaseHelper;
-import com.example.studenthandbookhaui.database.model.CourseClass;
-import com.example.studenthandbookhaui.database.repository.ClassRepository;
+import com.example.studenthandbookhaui.database.model.Course;
+import com.example.studenthandbookhaui.database.repository.CourseRepository;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,10 +27,12 @@ public class ScheduleFragment extends Fragment {
 
     private DatabaseHelper databaseHelper;
 
-    private ClassRepository classRepository;
+    private CourseRepository classRepository;
     private Button selectedButton;
 
-    private ArrayAdapter<CourseClass> classAdapter;
+    private ArrayAdapter<Course> classAdapter;
+
+    private ListView listView;
 
     public ScheduleFragment() {
         // Required empty public constructor
@@ -45,7 +49,7 @@ public class ScheduleFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         databaseHelper = new DatabaseHelper(getContext());
-        classRepository = new ClassRepository(databaseHelper);
+        classRepository = new CourseRepository(databaseHelper);
     }
 
     @Override
@@ -64,9 +68,12 @@ public class ScheduleFragment extends Fragment {
         for(int id : ids) {
             view.findViewById(id).setOnClickListener((v)->{onSelectDay(v);});
         }
+        listView = view.findViewById(R.id.lvSchedule);
 
+        selectedButton = view.findViewById(R.id.mondayBtn);
 
-//        classAdapter = new ArrayAdapter<>(getContext(), R.layout.schedule_class_item, classRepository.find());
+        classAdapter = new ScheduleAdapter(getContext(), classRepository.find());
+        listView.setAdapter(classAdapter);
     }
 
     public void onSelectDay(View v) {
