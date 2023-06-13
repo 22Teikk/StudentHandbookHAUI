@@ -11,14 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.studenthandbookhaui.R;
-import com.example.studenthandbookhaui.database.model.Course;
+import com.example.studenthandbookhaui.database.model.CourseModel;
 
 import java.util.ArrayList;
 
-public class ScheduleAdapter extends ArrayAdapter<Course> {
+public class ScheduleAdapter extends ArrayAdapter<CourseModel> {
 
     private LayoutInflater inflater;
-    public ScheduleAdapter(@NonNull Context context, ArrayList<Course> arrayList) {
+    public ScheduleAdapter(@NonNull Context context, ArrayList<CourseModel> arrayList) {
 
         super(context, 0, arrayList);
         inflater = LayoutInflater.from(context);
@@ -29,7 +29,7 @@ public class ScheduleAdapter extends ArrayAdapter<Course> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = inflater.inflate(R.layout.schedule_class_item, parent, false);
 
-        Course courseClass = getItem(position);
+        CourseModel courseModelClass = getItem(position);
 
         TextView name = view.findViewById(R.id.schedule_name);
         TextView time = view.findViewById(R.id.schedule_time);
