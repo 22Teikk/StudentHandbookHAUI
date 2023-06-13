@@ -1,14 +1,14 @@
 package com.example.studenthandbookhaui.database.model;
 
-public class CourseClass extends BaseModel {
+public class Course extends BaseModel {
     private String name;
     private String courseCode;
     private int courseLoadTheoretical;
     private int courseLoadPractical;
 
-    public CourseClass() {}
+    public Course() {}
 
-    public CourseClass(String name, String courseCode, int courseLoadTheoretical, int courseLoadPractical) {
+    public Course(String name, String courseCode, int courseLoadTheoretical, int courseLoadPractical) {
         this.name = name;
         this.courseCode = courseCode;
         this.courseLoadTheoretical = courseLoadTheoretical;
