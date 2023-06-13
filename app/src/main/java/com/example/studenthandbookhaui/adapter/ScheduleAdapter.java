@@ -11,17 +11,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.studenthandbookhaui.R;
+import com.example.studenthandbookhaui.database.DatabaseHelper;
+import com.example.studenthandbookhaui.database.model.ClassModel;
 import com.example.studenthandbookhaui.database.model.CourseModel;
+import com.example.studenthandbookhaui.database.repository.CourseRepository;
 
 import java.util.ArrayList;
 
-public class ScheduleAdapter extends ArrayAdapter<CourseModel> {
+public class ScheduleAdapter extends ArrayAdapter<ClassModel> {
 
+    DatabaseHelper dbHelper;
+    CourseRepository courseRepository;
     private LayoutInflater inflater;
-    public ScheduleAdapter(@NonNull Context context, ArrayList<CourseModel> arrayList) {
+
+    public ScheduleAdapter(@NonNull Context context, ArrayList<ClassModel> arrayList) {
 
         super(context, 0, arrayList);
         inflater = LayoutInflater.from(context);
+        dbHelper = new DatabaseHelper(context);
+        courseRepository = new CourseRepository(dbHelper);
     }
 
     @NonNull
@@ -29,16 +37,18 @@ public class ScheduleAdapter extends ArrayAdapter<CourseModel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = inflater.inflate(R.layout.schedule_class_item, parent, false);
 
-        CourseModel courseModelClass = getItem(position);
+        ClassModel classModel = getItem(position);
+
+        CourseModel courseModel = courseRepository.findById(Long.valueOf(classModel.getCourseId()));
 
         TextView name = view.findViewById(R.id.schedule_name);
         TextView time = view.findViewById(R.id.schedule_time);
         TextView date = view.findViewById(R.id.schedule_date);
         TextView classInfo = view.findViewById(R.id.schedule_class_info);
-        name.setText(getItem(position).getName());
-        time.setText("1,2,3");
-        date.setText("20/20/2022");
-        classInfo.setText("Vu Thi Duong");
+        name.setText(courseModel.getName());
+        time.setText("Lesson: " + classModel.getTimeInDay());
+        date.setText("");
+        classInfo.setText(classModel.getRoom());
 
         return view;
     }

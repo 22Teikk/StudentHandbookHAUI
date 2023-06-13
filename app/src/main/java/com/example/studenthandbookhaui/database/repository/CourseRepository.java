@@ -4,35 +4,28 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.studenthandbookhaui.database.DatabaseHelper;
-import com.example.studenthandbookhaui.database.model.Course;
+import com.example.studenthandbookhaui.database.model.CourseModel;
 
-public class CourseRepository extends BaseRepository<Course> {
+public class CourseRepository extends BaseRepository<CourseModel> {
     public CourseRepository(DatabaseHelper dbHelper) {
-        super(dbHelper, "courses");
+        super(dbHelper, "course");
     }
 
     @Override
-    protected Course getItemFromCursor(Cursor cursor) {
-        Course courseClass = new Course();
+    protected CourseModel getItemFromCursor(Cursor cursor) {
+        CourseModel courseModelClass = new CourseModel();
 
-        courseClass.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-        courseClass.setName(cursor.getString(cursor.getColumnIndexOrThrow("name")));
-        courseClass.setCourseCode(cursor.getString(cursor.getColumnIndexOrThrow("")));
-        courseClass.setCourseLoadPractical(cursor.getInt(cursor.getColumnIndexOrThrow("course_load_practical")));
-        courseClass.setCourseLoadTheoretical(cursor.getInt(cursor.getColumnIndexOrThrow("course_load_theoretical")));
+        courseModelClass.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
+        courseModelClass.setName(cursor.getString(cursor.getColumnIndexOrThrow("name")));
+        courseModelClass.setCourseCode(cursor.getString(cursor.getColumnIndexOrThrow("course_code")));
+        courseModelClass.setCourseLoadPractical(cursor.getInt(cursor.getColumnIndexOrThrow("course_load_practical")));
+        courseModelClass.setCourseLoadTheoretical(cursor.getInt(cursor.getColumnIndexOrThrow("course_load_theoretical")));
 
-        return courseClass;
+        return courseModelClass;
     }
 
     @Override
-    protected ContentValues getContentValues(Course item) {
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put("name", item.getName());
-        contentValues.put("course_code", item.getCourseCode());
-        contentValues.put("course_load_practical", item.getCourseLoadPractical());
-        contentValues.put("course_load_theoretical", item.getCourseLoadTheoretical());
-
-        return contentValues;
+    protected ContentValues getContentValues(CourseModel item) {
+        return new ContentValues();
     }
 }
