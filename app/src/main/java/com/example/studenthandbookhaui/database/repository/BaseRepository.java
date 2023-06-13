@@ -66,23 +66,6 @@ public abstract class BaseRepository<T> {
         return itemList;
     }
 
-    public ArrayList<T> find(String where) {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + where, null);
-        ArrayList<T> itemList = new ArrayList<>();
-        if (cursor!= null) {
-            while (cursor.moveToNext()) {
-                T item = getItemFromCursor(cursor);
-                itemList.add(item);
-            }
-            cursor.close();
-        }
-
-        return itemList;
-    }
-
-
-
     public long create(T item) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = getContentValues(item);
