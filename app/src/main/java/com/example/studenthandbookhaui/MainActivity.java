@@ -64,6 +64,5 @@ public class MainActivity extends AppCompatActivity {
         edtStudentID = findViewById(R.id.edtStudentID);
         chkSave = findViewById(R.id.chkSave);
         sharedPreferences = getSharedPreferences("saveID", MODE_PRIVATE);
-
     }
 }
