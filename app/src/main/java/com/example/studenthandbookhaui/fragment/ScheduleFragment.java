@@ -13,9 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.studenthandbookhaui.R;
-import com.example.studenthandbookhaui.adapter.ScheduleAdapter;
 import com.example.studenthandbookhaui.database.DatabaseHelper;
-import com.example.studenthandbookhaui.database.model.Course;
+import com.example.studenthandbookhaui.database.model.CourseModel;
 import com.example.studenthandbookhaui.database.repository.CourseRepository;
 
 /**
@@ -30,7 +29,7 @@ public class ScheduleFragment extends Fragment {
     private CourseRepository classRepository;
     private Button selectedButton;
 
-    private ArrayAdapter<Course> classAdapter;
+    private ArrayAdapter<CourseModel> classAdapter;
 
     private ListView listView;
 
@@ -71,9 +70,6 @@ public class ScheduleFragment extends Fragment {
         listView = view.findViewById(R.id.lvSchedule);
 
         selectedButton = view.findViewById(R.id.mondayBtn);
-
-//        classAdapter = new ScheduleAdapter(getContext(), classRepository.find());
-//        listView.setAdapter(classAdapter);
     }
 
     public void onSelectDay(View v) {

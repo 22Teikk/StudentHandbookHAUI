@@ -52,7 +52,7 @@ public abstract class BaseRepository<T> {
     
     public ArrayList<T> find(String whereQuery){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + "WHERE " + whereQuery, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + whereQuery, null);
         ArrayList<T> itemList = new ArrayList<>();
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -94,5 +94,11 @@ public abstract class BaseRepository<T> {
 
         db.close();
         return rowsAffected;
+    }
+
+    public Cursor rawQuery(String query) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
     }
 }

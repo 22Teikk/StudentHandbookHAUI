@@ -37,21 +37,6 @@ INSERT INTO users VALUES(7,'Lê','Văn G','Nam','2000/04/25','7','Hà Tây','Hà
 INSERT INTO users VALUES(8,'Phạm','Thị H','Nữ','1999/07/12','8','Hải Hưng','Hải Hưng','avatar8.jpg',NULL,'Kinh','123456789019');
 INSERT INTO users VALUES(9,'Nguyễn','Văn I','Nam','2001/12/30','9','Bắc Ninh','Bắc Ninh','avatar9.jpg',NULL,'Kinh','123456789020');
 INSERT INTO users VALUES(10,'Trần','Thị K','Nữ','1998/09/18','10','Hải Phòng','Hải Phòng','avatar10.jpg',NULL,'Kinh','123456789021');
-CREATE TABLE notes
-
-(
-
-    id      INTEGER PRIMARY KEY,
-
-    user_id INTEGER,
-
-    title   TEXT NULL,
-
-    content TEXT,
-
-    FOREIGN KEY (user_id) REFERENCES users (id)
-
-);
 CREATE TABLE instructors
 
 (
