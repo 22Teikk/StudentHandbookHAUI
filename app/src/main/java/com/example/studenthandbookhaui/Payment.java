@@ -3,21 +3,28 @@ package com.example.studenthandbookhaui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.studenthandbookhaui.database.DatabaseHelper;
 
 public class Payment extends AppCompatActivity {
+    TextView txtTotalPayment;
     ImageView btnBack;
+    ListView lvPayment;
+    DatabaseHelper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        getWidget();
+
+
+    }
+
+    private void getWidget(){
+
     }
 }
