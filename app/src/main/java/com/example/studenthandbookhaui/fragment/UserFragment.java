@@ -21,6 +21,11 @@ import com.example.studenthandbookhaui.Finance;
 import com.example.studenthandbookhaui.MainActivity;
 import com.example.studenthandbookhaui.R;
 import com.example.studenthandbookhaui.Result;
+import com.example.studenthandbookhaui.database.DatabaseHelper;
+import com.example.studenthandbookhaui.database.model.User;
+import com.example.studenthandbookhaui.database.repository.UserRepository;
+
+import java.text.SimpleDateFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,18 +74,44 @@ public class UserFragment extends Fragment {
         }
     }
     TextView btnLogOut;
+    TextView txtStudentId, txtCitizenID, txtGender,txtLocation, txtDob, txtName;
+    DatabaseHelper helper;
+    ImageView imgUser;
+    UserRepository userRepository;
+    User user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         getWidget(view);
+        setContent(view);
         btnLogOut.setOnClickListener(new Excute());
         return view;
     }
 
+    private void setContent(View view) {
+        user = userRepository.getUserByStudentCode("1");
+        txtName.setText(user.getFirstName() + " " + user.getLastName());
+        txtStudentId.setText(user.getStudentCode());
+        txtCitizenID.setText(user.getCitizenId());
+        txtGender.setText(user.getGender());
+        txtLocation.setText(user.getHomeTown());
+        txtDob.setText(user.getDob().toString());
+    }
+
     private void getWidget(View view){
+        txtName = view.findViewById(R.id.txtName);
+        imgUser = view.findViewById(R.id.imgUser);
         btnLogOut = view.findViewById(R.id.txtLogOut);
+        txtStudentId = view.findViewById(R.id.txtStudentID);
+        txtCitizenID = view.findViewById(R.id.txtCitizenID);
+        txtGender = view.findViewById(R.id.txtGender);
+        txtLocation = view.findViewById(R.id.txtLocation);
+        txtDob = view.findViewById(R.id.txtDob);
+        helper = new DatabaseHelper(getContext());
+        userRepository = new UserRepository(helper);
+        user = new User();
     }
 
     private class Excute implements View.OnClickListener {
