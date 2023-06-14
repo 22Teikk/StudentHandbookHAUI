@@ -30,7 +30,6 @@ public class NotificationRepository extends BaseRepository<NotificationModel>{
         Cursor cursor = rawQuery("SELECT notifications.type, notifications.content, user_notifications.created_at FROM user_notifications\n" +
                 "INNER JOIN notifications ON user_notifications.notification_id = notifications.id\n" +
                 "WHERE user_notifications.user_id = " + studentCode);
-
         while (cursor.moveToNext()) {
             NotificationModel notificationModel = new NotificationModel();
             notificationModel.setType(cursor.getString(0));
