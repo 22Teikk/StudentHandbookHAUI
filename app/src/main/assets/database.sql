@@ -362,11 +362,17 @@ CREATE TABLE notifications
 
     content    TEXT,
 
-    type       TEXT
+    type       TEXT,
 
     created_at TEXT
 
 );
+INSERT INTO notifications VALUES(1, 'You have new message','Message','2023-06-14 14:35:00');
+INSERT INTO notifications VALUES(2, 'You have new email from CEO', 'Email', '2023-06-14 14:40:00');
+INSERT INTO notifications VALUES(3, 'Update application', 'Update', '2023-06-14 15:00:00');
+INSERT INTO notifications VALUES(4, 'Thank for Login', 'Event', '2023-06-14 17:15:00');
+INSERT INTO notifications VALUES(5, 'You will have meeting tomorrow', 'Reminder', '2023-06-14 18:00:00');
+INSERT INTO notifications VALUES(6, 'Your application was updated', 'Update', '2023-06-15 09:00:00');
 CREATE TABLE user_notifications(
 
     id INTEGER PRIMARY KEY,
@@ -378,3 +384,10 @@ CREATE TABLE user_notifications(
     created_at TEXT
 
 );
+
+INSERT INTO user_notifications VALUES (1, 1, 1, '2023-06-14 14:35:00');
+INSERT INTO user_notifications VALUES (2, 1, 2, '2023-06-14 14:40:00');
+INSERT INTO user_notifications VALUES (3, 2, 1, '2023-06-14 15:00:00');
+INSERT INTO user_notifications VALUES (4, 3, 1, '2023-06-14 17:15:00');
+INSERT INTO user_notifications VALUES (5, 1, 3, '2023-06-14 18:00:00');
+INSERT INTO user_notifications VALUES (6, 2, 5, '2023-06-15 09:00:00');

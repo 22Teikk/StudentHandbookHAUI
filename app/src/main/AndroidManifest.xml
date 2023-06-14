@@ -16,6 +16,9 @@
         android:theme="@style/Theme.StudentHandbookHAUI"
         tools:targetApi="31">
         <activity
+            android:name=".Notification"
+            android:exported="false" />
+        <activity
             android:name=".Course"
             android:exported="false" />
         <activity

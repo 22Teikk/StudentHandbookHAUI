@@ -17,6 +17,7 @@ import com.example.studenthandbookhaui.Course;
 import com.example.studenthandbookhaui.E_Learning;
 import com.example.studenthandbookhaui.Finance;
 import com.example.studenthandbookhaui.HomePage;
+import com.example.studenthandbookhaui.Notification;
 import com.example.studenthandbookhaui.R;
 import com.example.studenthandbookhaui.Result;
 
@@ -110,7 +111,8 @@ public class HomeFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.btnNotification:
-
+                    intent = new Intent(getActivity(), Notification.class);
+                    startActivity(intent);
                     break;
                 case R.id.layoutCourse:
                     intent = new Intent(getActivity(), Course.class);
