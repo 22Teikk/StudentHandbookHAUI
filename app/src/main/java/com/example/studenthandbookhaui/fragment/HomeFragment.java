@@ -1,6 +1,8 @@
 package com.example.studenthandbookhaui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +70,7 @@ public class HomeFragment extends Fragment {
     ImageView btnNotification;
     LinearLayout btnCourses, btnResult, btnFinance, btnLearning;
     EditText edtNotes;
+    SharedPreferences sharedPreferences;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,7 +82,17 @@ public class HomeFragment extends Fragment {
         btnFinance.setOnClickListener(new Excute());
         btnResult.setOnClickListener(new Excute());
         btnCourses.setOnClickListener(new Excute());
+        sharedPreferences = this.getActivity().getSharedPreferences("saveNotes", Context.MODE_PRIVATE);
+        edtNotes.setText(sharedPreferences.getString("notes", ""));
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("notes", edtNotes.getText().toString());
+        editor.commit();
+        super.onPause();
     }
 
     private void getWidget(View view){

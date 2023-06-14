@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraint">
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/txtNameCourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
@@ -75,7 +75,7 @@
             android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toStartOf="@+id/txtCourseCode"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView8" />
+            app:layout_constraintTop_toBottomOf="@id/txtNameCourse" />
 
         <TextView
             android:id="@+id/txtCourseCode"
@@ -85,30 +85,51 @@
             android:text="10123123123123"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text1"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNameCourse" />
 
         <TextView
             android:id="@+id/text2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
-            android:text="Course load:"
+            android:text="Course load theoretical:"
             android:textSize="@dimen/_14sdp"
-            app:layout_constraintEnd_toStartOf="@+id/txtCourseLoad"
+            app:layout_constraintEnd_toStartOf="@+id/txtCourseLoadTheo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text1" />
 
         <TextView
-            android:id="@+id/txtCourseLoad"
+            android:id="@+id/txtCourseLoadTheo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
             android:text="10123123123123"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text1"
             app:layout_constraintTop_toBottomOf="@+id/txtCourseCode" />
+
+
+
+        <TextView
+            android:id="@+id/text6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Course load parctical:"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintEnd_toStartOf="@+id/txtCourseLoadPrac"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text2" />
+
+        <TextView
+            android:id="@+id/txtCourseLoadPrac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="10123123123123"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCourseLoadTheo" />
 
         <TextView
             android:id="@+id/text3"
@@ -117,24 +138,12 @@
             android:layout_margin="@dimen/_4sdp"
             android:text="Regular Score:"
             android:textSize="@dimen/_14sdp"
-            app:layout_constraintEnd_toStartOf="@+id/txtCourseLoad"
+            app:layout_constraintEnd_toStartOf="@+id/txtRegular"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text2" />
+            app:layout_constraintTop_toBottomOf="@id/text6" />
 
         <TextView
-            android:id="@+id/txtRegular1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4sdp"
-            android:text="10"
-            android:textColor="#E36464"
-            android:textSize="@dimen/_14sdp"
-            app:layout_constraintEnd_toEndOf="@id/txtRegular2"
-            app:layout_constraintStart_toEndOf="@id/text3"
-            app:layout_constraintTop_toBottomOf="@+id/txtCourseLoad" />
-
-        <TextView
-            android:id="@+id/txtRegular2"
+            android:id="@+id/txtRegular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
@@ -142,21 +151,22 @@
             android:textColor="#E36464"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCourseLoad" />
+            app:layout_constraintStart_toEndOf="@id/text3"
+            app:layout_constraintTop_toBottomOf="@+id/txtCourseLoadPrac" />
 
         <TextView
             android:id="@+id/text4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
-            android:text="Exam Score:"
+            android:text="Progress Score:"
             android:textSize="@dimen/_14sdp"
-            app:layout_constraintEnd_toStartOf="@+id/txtExam"
+            app:layout_constraintEnd_toStartOf="@+id/txtProgress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text3" />
 
         <TextView
-            android:id="@+id/txtExam"
+            android:id="@+id/txtProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
@@ -165,14 +175,14 @@
             android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text4"
-            app:layout_constraintTop_toBottomOf="@+id/txtRegular1" />
+            app:layout_constraintTop_toBottomOf="@+id/txtRegular" />
 
         <TextView
-            android:id="@+id/text5"
+            android:id="@+id/txtExam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
-            android:text="Number of breaks:"
+            android:text="Exam Score:"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toStartOf="@+id/txtNob"
             app:layout_constraintStart_toStartOf="parent"
@@ -187,8 +197,10 @@
             android:textColor="#E36464"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text5"
-            app:layout_constraintTop_toBottomOf="@+id/txtExam" />
+            app:layout_constraintStart_toEndOf="@id/txtExam"
+            app:layout_constraintTop_toBottomOf="@+id/txtProgress" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
