@@ -28,4 +28,6 @@ public class CourseRepository extends BaseRepository<CourseModel> {
     protected ContentValues getContentValues(CourseModel item) {
         return new ContentValues();
     }
+
+
 }
