@@ -62,14 +62,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/text1"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="wrap_content"
-                android:text="Balance: "
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp" />
-
-            <TextView
                 android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,22 +82,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/txtBalance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="27492379"
-                android:textColor="#3CD521"
-                android:textSize="@dimen/_20sdp" />
-
-            <TextView
                 android:id="@+id/txtDebt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="123123123"
+                android:text="0"
                 android:textColor="#E83F58"
                 android:textSize="@dimen/_20sdp" />
         </LinearLayout>
