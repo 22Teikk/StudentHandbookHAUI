@@ -51,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 if(user!= null){
                     Intent intent = new Intent(MainActivity.this, Onboarding.class);
                     startActivity(intent);
-                    ((UserID) getApplication()).userId = (int) user.getId();
-
+                    ((UserID) getApplication()).userId = user.getId() + "";
                 }
                 else Toast.makeText(MainActivity.this, "Invalid Student ID", Toast.LENGTH_SHORT).show();
             }

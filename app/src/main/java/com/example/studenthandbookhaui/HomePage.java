@@ -2,6 +2,7 @@ package com.example.studenthandbookhaui;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,5 +79,9 @@ public class HomePage extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public String getStudentID() {
+        return (((UserID) getApplication()).userId);
     }
 }

@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.studenthandbookhaui.HomePage;
 import com.example.studenthandbookhaui.R;
 import com.example.studenthandbookhaui.adapter.ScheduleAdapter;
 import com.example.studenthandbookhaui.database.DatabaseHelper;
@@ -41,7 +42,7 @@ public class ScheduleFragment extends Fragment {
 
     private ScheduleAdapter classAdapter;
     private ArrayList<ClassModel> classList;
-
+    HomePage homePage;
     private ListView listView;
 
     public ScheduleFragment() {
@@ -72,7 +73,7 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        homePage = (HomePage) getActivity();
         int dayInWeek = 1;
         int[] ids = {R.id.mondayBtn, R.id.tuesdayBtn, R.id.wednesdayBtn, R.id.thursdayBtn, R.id.fridayBtn,R.id.saturdayBtn,R.id.sundayBtn};
 
@@ -97,7 +98,7 @@ public class ScheduleFragment extends Fragment {
         v.setBackgroundResource(R.drawable.cus_button);
 
         classList.clear();
-        classList.addAll(userRepository.getClassByStudentCode("1", ""+dayInWeek));
+        classList.addAll(userRepository.getClassByStudentCode(homePage.getStudentID() + "", ""+dayInWeek));
         classAdapter.notifyDataSetChanged();
     }
 }

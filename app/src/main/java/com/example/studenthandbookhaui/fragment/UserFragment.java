@@ -23,6 +23,7 @@ import androidx.lifecycle.Lifecycle;
 
 import com.example.studenthandbookhaui.E_Learning;
 import com.example.studenthandbookhaui.Finance;
+import com.example.studenthandbookhaui.HomePage;
 import com.example.studenthandbookhaui.MainActivity;
 import com.example.studenthandbookhaui.R;
 import com.example.studenthandbookhaui.Result;
@@ -89,11 +90,13 @@ public class UserFragment extends Fragment {
     ImageView imgUser;
     UserRepository userRepository;
     User user;
+    HomePage homePage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+        homePage = (HomePage) getActivity();
         getWidget(view);
         setContent(view);
         btnLogOut.setOnClickListener(new Excute());
@@ -124,7 +127,7 @@ public class UserFragment extends Fragment {
     }
 
     private void setContent(View view) {
-        user = userRepository.getUserByStudentCode("2");
+        user = userRepository.getUserByStudentCode(homePage.getStudentID());
         txtName.setText(user.getFirstName() + " " + user.getLastName());
         txtStudentId.setText(user.getStudentCode());
         txtCitizenID.setText(user.getCitizenId());
