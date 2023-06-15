@@ -59,7 +59,7 @@ public class Result extends AppCompatActivity {
         resultRepository = new ResultRepository(databaseHelper);
         resultList = new ArrayList<>();
         resultList.clear();
-        resultList.addAll(resultRepository.getResultByStudentCode("1"));
+        resultList.addAll(resultRepository.getResultByStudentCode((((UserID) getApplication()).userId) + ""));
         resultAdapter = new ResultAdapter(this, resultList);
         lvResult.setAdapter(resultAdapter);
     }

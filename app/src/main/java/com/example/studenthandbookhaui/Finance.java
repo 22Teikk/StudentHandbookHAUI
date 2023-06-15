@@ -49,7 +49,7 @@ public class Finance extends AppCompatActivity {
         financeRepository = new FinanceRepository(helper);
         listFinance = new ArrayList<>();
         listFinance.clear();
-        listFinance.addAll(financeRepository.getFinanceByStudentCode("1"));
+        listFinance.addAll(financeRepository.getFinanceByStudentCode((((UserID) getApplication()).userId) + ""));
         for (FinanceModel temp :
                 listFinance) {
             sumDebt += temp.getDebt();

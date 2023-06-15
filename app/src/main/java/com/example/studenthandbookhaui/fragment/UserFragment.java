@@ -29,7 +29,6 @@ import com.example.studenthandbookhaui.Result;
 import com.example.studenthandbookhaui.database.DatabaseHelper;
 import com.example.studenthandbookhaui.database.model.User;
 import com.example.studenthandbookhaui.database.repository.UserRepository;
-import com.example.studenthandbookhaui.databinding.FragmentUserBinding;
 
 import java.io.IOException;
 import java.io.InputStream;

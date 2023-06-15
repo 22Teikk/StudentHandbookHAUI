@@ -33,7 +33,7 @@ public class Notification extends AppCompatActivity {
         lvNotification = findViewById(R.id.lvNotification);
         helper = new DatabaseHelper(this);
         notificationRepository = new NotificationRepository(helper);
-        notifications.addAll(notificationRepository.getNotificationByStudentCode("1"));
+        notifications.addAll(notificationRepository.getNotificationByStudentCode((((UserID) getApplication()).userId) + ""));
         adapter = new NotificationAdapter(this, notifications);
         lvNotification.setAdapter(adapter);
         btnBack.setOnClickListener(v -> onBackPressed());
