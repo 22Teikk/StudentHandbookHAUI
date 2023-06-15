@@ -27,16 +27,16 @@ CREATE TABLE users
     ethnicity    TEXT,
     citizen_id   TEXT
 );
-INSERT INTO users VALUES(1,'Nguyễn','Văn A','Male','2000/03/15','1','Hà Nội','Hà Nội','avatar1.jpg',NULL,'Kinh','123456789012');
-INSERT INTO users VALUES(2,'Trần','Thị B','Female','1999/05/28','2','Hải Phòng','Hải Phòng','avatar2.jpg',NULL,'Kinh','123456789013');
-INSERT INTO users VALUES(3,'Lê','Văn C','Female','2001/11/02','3','Bắc Ninh','Bắc Ninh','avatar3.jpg',NULL,'Kinh','123456789014');
-INSERT INTO users VALUES(4,'Phạm','Thị D','Female','1998/08/10','4','Hà Nam','Hà Nam','avatar4.jpg',NULL,'Kinh','123456789015');
-INSERT INTO users VALUES(5,'Nguyễn','Văn E','Male','2002/01/20','5','Hải Dương','Hải Dương','avatar5.jpg',NULL,'Kinh','123456789016');
-INSERT INTO users VALUES(6,'Trần','Thị F','Female','2003/06/07','6','Bắc Giang','Bắc Giang','avatar6.jpg',NULL,'Kinh','123456789017');
-INSERT INTO users VALUES(7,'Lê','Văn G','Male','2000/04/25','7','Hà Tây','Hà Tây','avatar7.jpg',NULL,'Kinh','123456789018');
-INSERT INTO users VALUES(8,'Phạm','Thị H','Female','1999/07/12','8','Hải Hưng','Hải Hưng','avatar8.jpg',NULL,'Kinh','123456789019');
-INSERT INTO users VALUES(9,'Nguyễn','Văn I','Male','2001/12/30','9','Bắc Ninh','Bắc Ninh','avatar9.jpg',NULL,'Kinh','123456789020');
-INSERT INTO users VALUES(10,'Trần','Thị K','Female','1998/09/18','10','Hải Phòng','Hải Phòng','avatar10.jpg',NULL,'Kinh','123456789021');
+INSERT INTO users VALUES(1,'Nguyễn','Văn A','Male','2000/03/15','1','Hà Nội','Hà Nội','https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png',NULL,'Kinh','123456789012');
+INSERT INTO users VALUES(2,'Trần','Thị B','Female','1999/05/28','2','Hải Phòng','Hải Phòng','https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png',NULL,'Kinh','123456789013');
+INSERT INTO users VALUES(3,'Lê','Văn C','Female','2001/11/02','3','Bắc Ninh','Bắc Ninh','https://cdn-icons-png.flaticon.com/512/4128/4128253.png',NULL,'Kinh','123456789014');
+INSERT INTO users VALUES(4,'Phạm','Thị D','Female','1998/08/10','4','Hà Nam','Hà Nam','avatar4.png',NULL,'Kinh','123456789015');
+INSERT INTO users VALUES(5,'Nguyễn','Văn E','Male','2002/01/20','5','Hải Dương','Hải Dương','https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/user_man_male_profile_account-512.png',NULL,'Kinh','123456789016');
+INSERT INTO users VALUES(6,'Trần','Thị F','Female','2003/06/07','6','Bắc Giang','Bắc Giang','https://cdn-icons-png.flaticon.com/512/4140/4140051.png',NULL,'Kinh','123456789017');
+INSERT INTO users VALUES(7,'Lê','Văn G','Male','2000/04/25','7','Hà Tây','Hà Tây','https://www.shareicon.net/data/2016/05/24/770137_man_512x512.png',NULL,'Kinh','123456789018');
+INSERT INTO users VALUES(8,'Phạm','Thị H','Female','1999/07/12','8','Hải Hưng','Hải Hưng','https://cdn-icons-png.flaticon.com/512/123/123164.png',NULL,'Kinh','123456789019');
+INSERT INTO users VALUES(9,'Nguyễn','Văn I','Male','2001/12/30','9','Bắc Ninh','Bắc Ninh','https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png',NULL,'Kinh','123456789020');
+INSERT INTO users VALUES(10,'Trần','Thị K','Female','1998/09/18','10','Hải Phòng','Hải Phòng','https://cdn-icons-png.flaticon.com/512/123/123164.png',NULL,'Kinh','123456789021');
 CREATE TABLE instructors
 
 (

@@ -1,7 +1,12 @@
 package com.example.studenthandbookhaui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +29,13 @@ import com.example.studenthandbookhaui.Result;
 import com.example.studenthandbookhaui.database.DatabaseHelper;
 import com.example.studenthandbookhaui.database.model.User;
 import com.example.studenthandbookhaui.database.repository.UserRepository;
+import com.example.studenthandbookhaui.databinding.FragmentUserBinding;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 
 /**
@@ -90,14 +101,38 @@ public class UserFragment extends Fragment {
         return view;
     }
 
+    private class LoadImage extends AsyncTask<String, Void, Bitmap> {
+        Bitmap bitmap = null;
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            try {
+                URL url = new URL(strings[0]);
+                InputStream inputStream = url.openConnection().getInputStream();
+                bitmap = BitmapFactory.decodeStream(inputStream);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            imgUser.setImageBitmap(bitmap);
+        }
+    }
+
     private void setContent(View view) {
-        user = userRepository.getUserByStudentCode("1");
+        user = userRepository.getUserByStudentCode("2");
         txtName.setText(user.getFirstName() + " " + user.getLastName());
         txtStudentId.setText(user.getStudentCode());
         txtCitizenID.setText(user.getCitizenId());
         txtGender.setText(user.getGender());
         txtLocation.setText(user.getHomeTown());
         txtDob.setText(user.getDob().toString());
+        new LoadImage().execute(user.getAvatar());
     }
 
     private void getWidget(View view){
