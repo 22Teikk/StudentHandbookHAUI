@@ -27,16 +27,16 @@ CREATE TABLE users
     ethnicity    TEXT,
     citizen_id   TEXT
 );
-INSERT INTO users VALUES(1,'Nguyễn','Văn A','Male','2000/03/15','1','Hà Nội','Hà Nội','https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png',NULL,'Kinh','123456789012');
-INSERT INTO users VALUES(2,'Trần','Thị B','Female','1999/05/28','2','Hải Phòng','Hải Phòng','https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png',NULL,'Kinh','123456789013');
-INSERT INTO users VALUES(3,'Lê','Văn C','Female','2001/11/02','3','Bắc Ninh','Bắc Ninh','https://cdn-icons-png.flaticon.com/512/4128/4128253.png',NULL,'Kinh','123456789014');
-INSERT INTO users VALUES(4,'Phạm','Thị D','Female','1998/08/10','4','Hà Nam','Hà Nam','avatar4.png',NULL,'Kinh','123456789015');
-INSERT INTO users VALUES(5,'Nguyễn','Văn E','Male','2002/01/20','5','Hải Dương','Hải Dương','https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/user_man_male_profile_account-512.png',NULL,'Kinh','123456789016');
-INSERT INTO users VALUES(6,'Trần','Thị F','Female','2003/06/07','6','Bắc Giang','Bắc Giang','https://cdn-icons-png.flaticon.com/512/4140/4140051.png',NULL,'Kinh','123456789017');
-INSERT INTO users VALUES(7,'Lê','Văn G','Male','2000/04/25','7','Hà Tây','Hà Tây','https://www.shareicon.net/data/2016/05/24/770137_man_512x512.png',NULL,'Kinh','123456789018');
-INSERT INTO users VALUES(8,'Phạm','Thị H','Female','1999/07/12','8','Hải Hưng','Hải Hưng','https://cdn-icons-png.flaticon.com/512/123/123164.png',NULL,'Kinh','123456789019');
-INSERT INTO users VALUES(9,'Nguyễn','Văn I','Male','2001/12/30','9','Bắc Ninh','Bắc Ninh','https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png',NULL,'Kinh','123456789020');
-INSERT INTO users VALUES(10,'Trần','Thị K','Female','1998/09/18','10','Hải Phòng','Hải Phòng','https://cdn-icons-png.flaticon.com/512/123/123164.png',NULL,'Kinh','123456789021');
+INSERT INTO users VALUES(1,'Nguyễn','Văn A','Male','2000/03/15','1','Hà Nội','Hà Nội','user_avatar/avatar1.jpg',NULL,'Kinh','123456789012');
+INSERT INTO users VALUES(2,'Trần','Thị B','Female','1999/05/28','2','Hải Phòng','Hải Phòng','user_avatar/avatar2.jpg',NULL,'Kinh','123456789013');
+INSERT INTO users VALUES(3,'Lê','Văn C','Female','2001/11/02','3','Bắc Ninh','Bắc Ninh','user_avatar/avatar3.jpg',NULL,'Kinh','123456789014');
+INSERT INTO users VALUES(4,'Phạm','Thị D','Female','1998/08/10','4','Hà Nam','Hà Nam','user_avatar/avatar4.jpg',NULL,'Kinh','123456789015');
+INSERT INTO users VALUES(5,'Nguyễn','Văn E','Male','2002/01/20','5','Hải Dương','Hải Dương','user_avatar/avatar5.jpg',NULL,'Kinh','123456789016');
+INSERT INTO users VALUES(6,'Trần','Thị F','Female','2003/06/07','6','Bắc Giang','Bắc Giang','user_avatar/avatar6.jpg',NULL,'Kinh','123456789017');
+INSERT INTO users VALUES(7,'Lê','Văn G','Male','2000/04/25','7','Hà Tây','Hà Tây','user_avatar/avatar7.jpg',NULL,'Kinh','123456789018');
+INSERT INTO users VALUES(8,'Phạm','Thị H','Female','1999/07/12','8','Hải Hưng','Hải Hưng','user_avatar/avatar8.jpg',NULL,'Kinh','123456789019');
+INSERT INTO users VALUES(9,'Nguyễn','Văn I','Male','2001/12/30','9','Bắc Ninh','Bắc Ninh','user_avatar/avatar9.jpg',NULL,'Kinh','123456789020');
+INSERT INTO users VALUES(10,'Trần','Thị K','Female','1998/09/18','10','Hải Phòng','Hải Phòng','user_avatar/avatar1.jpg',NULL,'Kinh','123456789021');
 CREATE TABLE instructors
 
 (
@@ -50,16 +50,16 @@ CREATE TABLE instructors
     phone_number TEXT
 
 );
-INSERT INTO instructors VALUES(1,'Lê Thị A','./avatar1.png','0123456789');
-INSERT INTO instructors VALUES(2,'Nguyễn Văn B','./avatar2.png','0987654321');
-INSERT INTO instructors VALUES(3,'Trần Thị C','./avatar3.png','0369852147');
-INSERT INTO instructors VALUES(4,'Phạm Đình D','./avatar4.png','0932145678');
-INSERT INTO instructors VALUES(5,'Võ Thị E','./avatar5.png','0778642913');
-INSERT INTO instructors VALUES(6,'Hoàng Văn F','./avatar6.png','0846231579');
-INSERT INTO instructors VALUES(7,'Trịnh Thị G','./avatar7.png','0912374568');
-INSERT INTO instructors VALUES(8,'Đặng Văn H','./avatar8.png','0857394612');
-INSERT INTO instructors VALUES(9,'Lý Thị I','./avatar9.png','0975432198');
-INSERT INTO instructors VALUES(10,'Ngô Văn K','./avatar10.png','0824163579');
+INSERT INTO instructors VALUES(1,'Lê Thị A','user_avatar/avatar1.jpg','0123456789');
+INSERT INTO instructors VALUES(2,'Nguyễn Văn B','user_avatar/avatar2.jpg','0987654321');
+INSERT INTO instructors VALUES(3,'Trần Thị C','user_avatar/avatar3.jpg','0369852147');
+INSERT INTO instructors VALUES(4,'Phạm Đình D','user_avatar/avatar4.jpg','0932145678');
+INSERT INTO instructors VALUES(5,'Võ Thị E','user_avatar/avatar5.jpg','0778642913');
+INSERT INTO instructors VALUES(6,'Hoàng Văn F','user_avatar/avatar6.jpg','0846231579');
+INSERT INTO instructors VALUES(7,'Trịnh Thị G','user_avatar/avatar7.jpg','0912374568');
+INSERT INTO instructors VALUES(8,'Đặng Văn H','user_avatar/avatar8.jpg','0857394612');
+INSERT INTO instructors VALUES(9,'Lý Thị I','user_avatar/avatar9.jpg','0975432198');
+INSERT INTO instructors VALUES(10,'Ngô Văn K','user_avatar/avatar10.jpg','0824163579');
 CREATE TABLE course
 
 (

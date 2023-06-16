@@ -1,42 +1,29 @@
 package com.example.studenthandbookhaui.fragment;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedDispatcher;
-import androidx.activity.OnBackPressedDispatcherOwner;
-import androidx.annotation.MainThread;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
+import androidx.fragment.app.FragmentActivity;
 
-import com.example.studenthandbookhaui.E_Learning;
-import com.example.studenthandbookhaui.Finance;
 import com.example.studenthandbookhaui.HomePage;
 import com.example.studenthandbookhaui.MainActivity;
 import com.example.studenthandbookhaui.R;
-import com.example.studenthandbookhaui.Result;
 import com.example.studenthandbookhaui.database.DatabaseHelper;
 import com.example.studenthandbookhaui.database.model.User;
 import com.example.studenthandbookhaui.database.repository.UserRepository;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,13 +71,15 @@ public class UserFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     TextView btnLogOut;
-    TextView txtStudentId, txtCitizenID, txtGender,txtLocation, txtDob, txtName;
+    TextView txtStudentId, txtCitizenID, txtGender, txtLocation, txtDob, txtName;
     DatabaseHelper helper;
     ImageView imgUser;
     UserRepository userRepository;
     User user;
     HomePage homePage;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -99,45 +88,36 @@ public class UserFragment extends Fragment {
         homePage = (HomePage) getActivity();
         getWidget(view);
         setContent(view);
-        btnLogOut.setOnClickListener(new Excute());
+        btnLogOut.setOnClickListener(new Execute());
         return view;
     }
 
-    private class LoadImage extends AsyncTask<String, Void, Bitmap> {
-        Bitmap bitmap = null;
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            try {
-                URL url = new URL(strings[0]);
-                InputStream inputStream = url.openConnection().getInputStream();
-                bitmap = BitmapFactory.decodeStream(inputStream);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            imgUser.setImageBitmap(bitmap);
-        }
-    }
-
     private void setContent(View view) {
-        user = userRepository.getUserByStudentCode(homePage.getStudentID());
-        txtName.setText(user.getFirstName() + " " + user.getLastName());
-        txtStudentId.setText(user.getStudentCode());
-        txtCitizenID.setText(user.getCitizenId());
-        txtGender.setText(user.getGender());
-        txtLocation.setText(user.getHomeTown());
-        txtDob.setText(user.getDob().toString());
-        new LoadImage().execute(user.getAvatar());
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            user = userRepository.getUserByStudentCode(homePage.getStudentID());
+            txtName.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
+            txtStudentId.setText(user.getStudentCode());
+            txtCitizenID.setText(user.getCitizenId());
+            txtGender.setText(user.getGender());
+            txtLocation.setText(user.getHomeTown());
+            txtDob.setText(sdf.format(user.getDob()));
+            FragmentActivity activity = getActivity();
+            if (activity != null) {
+                AssetManager am = activity.getAssets();
+                InputStream is = am.open(user.getAvatar());
+                Bitmap bm = BitmapFactory.decodeStream(is);
+
+                imgUser.setImageBitmap(bm);
+            }
+        } catch (Exception e) {
+            imgUser.setImageResource(R.drawable.user);
+            e.printStackTrace();
+        }
+
     }
 
-    private void getWidget(View view){
+    private void getWidget(View view) {
         txtName = view.findViewById(R.id.txtName);
         imgUser = view.findViewById(R.id.imgUser);
         btnLogOut = view.findViewById(R.id.txtLogOut);
@@ -151,16 +131,13 @@ public class UserFragment extends Fragment {
         user = new User();
     }
 
-    private class Excute implements View.OnClickListener {
+    private class Execute implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.txtLogOut:
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                    break;
-
+            if (view.getId() == R.id.txtLogOut) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
         }
     }
