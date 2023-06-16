@@ -269,7 +269,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtExam"
+                    android:id="@+id/txt"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -288,7 +288,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toTopOf="@id/txtExam" />
+                    app:layout_constraintTop_toTopOf="@id/txt" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -82,14 +82,15 @@
                     android:contentDescription="Courses"
                     android:padding="@dimen/_8sdp"
                     android:src="@drawable/course"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Courses"
                     android:gravity="center"
+                    android:text="Courses"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_20sdp"/>
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,14 +114,15 @@
                     android:contentDescription="Courses"
                     android:padding="@dimen/_8sdp"
                     android:src="@drawable/result"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Result"
                     android:gravity="center"
+                    android:text="Result"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_20sdp"/>
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -144,14 +146,15 @@
                     android:contentDescription="Finance"
                     android:padding="@dimen/_8sdp"
                     android:src="@drawable/finance"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Finance"
                     android:gravity="center"
+                    android:text="Finance"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_20sdp"/>
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -175,14 +178,15 @@
                     android:contentDescription="Elearning"
                     android:padding="@dimen/_8sdp"
                     android:src="@drawable/elearning"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Learning"
                     android:gravity="center"
+                    android:text="Learning"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_20sdp"/>
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
