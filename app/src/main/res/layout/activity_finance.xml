@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/_14sdp"
+    android:paddingBottom="@dimen/_14sdp"
+    android:paddingStart="@dimen/_12sdp"
+    android:paddingEnd="@dimen/_12sdp"
     tools:context=".Finance">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
@@ -17,24 +21,24 @@
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_8sdp"
+            android:layout_height="wrap_content"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
-            android:padding="@dimen/_8sdp"
             android:text="Finance"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,19 +48,23 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_8sdp"
         android:background="@drawable/cus_shape"
-        android:padding="@dimen/_8sdp"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingTop="@dimen/_15sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraint">
+        app:layout_constraintTop_toBottomOf="@+id/constraint">
 
         <LinearLayout
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_5sdp"
             app:layout_constraintDimensionRatio="H, 1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -65,31 +73,21 @@
                 android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Debt: "
+                android:text="Debt"
                 android:textColor="#E83F58"
-                android:textSize="@dimen/_20sdp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/title"
-            app:layout_constraintTop_toTopOf="parent">
+                android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:id="@+id/txtDebt"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="end"
                 android:text="0"
                 android:textColor="#E83F58"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_14sdp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -98,34 +96,41 @@
         android:id="@+id/textView7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_8sdp"
-        android:text="Transaction history: "
-        android:textColor="@color/black"
-        android:textSize="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:text="Transaction history"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/_14sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <ListView
         android:id="@+id/lvFinance"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_300sdp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/_8sdp"
-        android:padding="@dimen/_8sdp"
+        app:layout_constraintBottom_toTopOf="@id/btnPayment"
+        android:divider="#00ffffff"
+        android:dividerHeight="@dimen/_5sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView7"/>
+        app:layout_constraintTop_toBottomOf="@id/textView7"
+        tools:listitem="@layout/lv_finance"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPayment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginStart="@dimen/_50sdp"
         android:layout_marginEnd="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:background="@drawable/cus_button"
         android:text="Debt Payment"
-        app:layout_constraintTop_toBottomOf="@id/lvFinance"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/poppins"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

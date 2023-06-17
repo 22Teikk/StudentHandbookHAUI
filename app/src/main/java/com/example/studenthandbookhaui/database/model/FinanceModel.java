@@ -1,16 +1,30 @@
 package com.example.studenthandbookhaui.database.model;
 
+import java.util.Date;
+
 public class FinanceModel extends BaseModel{
+    private String classID;
     private String nameCourse;
-    private String debt_paid_date;
+    private Date debtPaidDate;
     private int debt;
+
+    private boolean isSelected;
 
     public FinanceModel(){}
 
-    public FinanceModel(String nameCourse, String debt_paid_date, int debt) {
+    public FinanceModel(String nameCourse, String classId, Date debtPaidDate, int debt) {
         this.nameCourse = nameCourse;
-        this.debt_paid_date = debt_paid_date;
+        this.classID = classId;
+        this.debtPaidDate = debtPaidDate;
         this.debt = debt;
+    }
+
+    public String getClassID() {
+        return classID;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
     }
 
     public String getNameCourse() {
@@ -21,12 +35,12 @@ public class FinanceModel extends BaseModel{
         this.nameCourse = nameCourse;
     }
 
-    public String getDebt_paid_date() {
-        return debt_paid_date;
+    public Date getDebtPaidDate() {
+        return debtPaidDate;
     }
 
-    public void setDebt_paid_date(String debt_paid_date) {
-        this.debt_paid_date = debt_paid_date;
+    public void setDebtPaidDate(Date debtPaidDate) {
+        this.debtPaidDate = debtPaidDate;
     }
 
     public int getDebt() {
@@ -35,5 +49,13 @@ public class FinanceModel extends BaseModel{
 
     public void setDebt(int debt) {
         this.debt = debt;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.studenthandbookhaui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ public class CourseAdapter extends ArrayAdapter<CourseModel> {
 
         name.setText(courseModel.getName());
         code.setText(courseModel.getCourseCode());
-        load.setText(courseModel.getCourseLoadTheoretical() + "-" + courseModel.getCourseLoadPractical());
+        load.setText(String.format("%d.00\t%d.00", courseModel.getCourseLoadTheoretical(), courseModel.getCourseLoadPractical()));
         return view;
     }
 }

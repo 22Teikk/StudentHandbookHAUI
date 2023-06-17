@@ -18,12 +18,12 @@ import com.example.studenthandbookhaui.HomePage;
 import com.example.studenthandbookhaui.MainActivity;
 import com.example.studenthandbookhaui.R;
 import com.example.studenthandbookhaui.database.DatabaseHelper;
-import com.example.studenthandbookhaui.database.model.User;
+import com.example.studenthandbookhaui.database.model.UserModel;
 import com.example.studenthandbookhaui.database.repository.UserRepository;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,7 +77,7 @@ public class UserFragment extends Fragment {
     DatabaseHelper helper;
     ImageView imgUser;
     UserRepository userRepository;
-    User user;
+    UserModel userModel;
     HomePage homePage;
 
     @Override
@@ -94,18 +94,18 @@ public class UserFragment extends Fragment {
 
     private void setContent(View view) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            user = userRepository.getUserByStudentCode(homePage.getStudentID());
-            txtName.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
-            txtStudentId.setText(user.getStudentCode());
-            txtCitizenID.setText(user.getCitizenId());
-            txtGender.setText(user.getGender());
-            txtLocation.setText(user.getHomeTown());
-            txtDob.setText(sdf.format(user.getDob()));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+            userModel = userRepository.getUserByStudentCode(homePage.getStudentID());
+            txtName.setText(String.format("%s %s", userModel.getFirstName(), userModel.getLastName()));
+            txtStudentId.setText(userModel.getStudentCode());
+            txtCitizenID.setText(userModel.getCitizenId());
+            txtGender.setText(userModel.getGender());
+            txtLocation.setText(userModel.getHomeTown());
+            txtDob.setText(sdf.format(userModel.getDob()));
             FragmentActivity activity = getActivity();
             if (activity != null) {
                 AssetManager am = activity.getAssets();
-                InputStream is = am.open(user.getAvatar());
+                InputStream is = am.open(userModel.getAvatar());
                 Bitmap bm = BitmapFactory.decodeStream(is);
 
                 imgUser.setImageBitmap(bm);
@@ -128,7 +128,7 @@ public class UserFragment extends Fragment {
         txtDob = view.findViewById(R.id.txtDob);
         helper = new DatabaseHelper(getContext());
         userRepository = new UserRepository(helper);
-        user = new User();
+        userModel = new UserModel();
     }
 
     private class Execute implements View.OnClickListener {
