@@ -3,7 +3,6 @@ package com.example.studenthandbookhaui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studenthandbookhaui.database.DatabaseHelper;
-import com.example.studenthandbookhaui.database.model.User;
+import com.example.studenthandbookhaui.database.model.UserModel;
 import com.example.studenthandbookhaui.database.repository.UserRepository;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
                     editor.commit();
                 }
 
-                User user = userRepository.getUserByStudentCode(edtStudentID.getText().toString());
-                if(user!= null){
+                UserModel userModel = userRepository.getUserByStudentCode(edtStudentID.getText().toString());
+                if(userModel != null){
                     Intent intent = new Intent(MainActivity.this, Onboarding.class);
                     startActivity(intent);
-                    ((UserID) getApplication()).userId = user.getId() + "";
+                    ((UserID) getApplication()).userId = userModel.getId() + "";
                 }
                 else Toast.makeText(MainActivity.this, "Invalid Student ID", Toast.LENGTH_SHORT).show();
             }

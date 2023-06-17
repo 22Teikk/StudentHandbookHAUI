@@ -3,7 +3,7 @@ package com.example.studenthandbookhaui.database.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User extends BaseModel implements Serializable {
+public class UserModel extends BaseModel implements Serializable {
     private String firstName;
     private String lastName;
     private String gender;
@@ -16,9 +16,9 @@ public class User extends BaseModel implements Serializable {
     private String ethnicity;
     private String citizenId;
 
-    public User() {}
+    public UserModel() {}
 
-    public User(String firstName, String lastName, String gender, Date dob, String studentCode, String address, String homeTown, String avatar, String religion, String ethnicity, String citizenId) {
+    public UserModel(String firstName, String lastName, String gender, Date dob, String studentCode, String address, String homeTown, String avatar, String religion, String ethnicity, String citizenId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;

@@ -2,43 +2,45 @@ package com.example.studenthandbookhaui.database.repository;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.util.Log;
 
 import com.example.studenthandbookhaui.database.DatabaseHelper;
 import com.example.studenthandbookhaui.database.model.ClassModel;
-import com.example.studenthandbookhaui.database.model.User;
+import com.example.studenthandbookhaui.database.model.UserModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
-public class UserRepository extends BaseRepository<User> {
+public class UserRepository extends BaseRepository<UserModel> {
     public UserRepository(DatabaseHelper dbHelper) {
         super(dbHelper, "users");
     }
 
     @Override
-    protected User getItemFromCursor(Cursor cursor) {
-        User user = new User();
+    protected UserModel getItemFromCursor(Cursor cursor) {
+        UserModel userModel = new UserModel();
 
-        user.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-        user.setFirstName(cursor.getString(cursor.getColumnIndexOrThrow("first_name")));
-        user.setLastName(cursor.getString(cursor.getColumnIndexOrThrow("last_name")));
-        user.setAvatar(cursor.getString(cursor.getColumnIndexOrThrow("avatar")));
-        user.setAddress(cursor.getString(cursor.getColumnIndexOrThrow("address")));
-        user.setDob(new Date(cursor.getString(cursor.getColumnIndexOrThrow("dob"))));
-        user.setCitizenId(cursor.getString(cursor.getColumnIndexOrThrow("citizen_id")));
-        user.setHomeTown(cursor.getString(cursor.getColumnIndexOrThrow("hometown")));
-        user.setStudentCode(cursor.getString(cursor.getColumnIndexOrThrow("student_code")));
-        user.setGender(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
-        user.setEthnicity(cursor.getString(cursor.getColumnIndexOrThrow("ethnicity")));
+        userModel.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
+        userModel.setFirstName(cursor.getString(cursor.getColumnIndexOrThrow("first_name")));
+        userModel.setLastName(cursor.getString(cursor.getColumnIndexOrThrow("last_name")));
+        userModel.setAvatar(cursor.getString(cursor.getColumnIndexOrThrow("avatar")));
+        userModel.setAddress(cursor.getString(cursor.getColumnIndexOrThrow("address")));
+        userModel.setDob(new Date(cursor.getString(cursor.getColumnIndexOrThrow("dob"))));
+        userModel.setCitizenId(cursor.getString(cursor.getColumnIndexOrThrow("citizen_id")));
+        userModel.setHomeTown(cursor.getString(cursor.getColumnIndexOrThrow("hometown")));
+        userModel.setStudentCode(cursor.getString(cursor.getColumnIndexOrThrow("student_code")));
+        userModel.setGender(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
+        userModel.setEthnicity(cursor.getString(cursor.getColumnIndexOrThrow("ethnicity")));
 
-        return user;
+        return userModel;
     }
 
     @Override
-    protected ContentValues getContentValues(User item) {
+    protected ContentValues getContentValues(UserModel item) {
         ContentValues contentValues = new ContentValues();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
 
         contentValues.put("first_name", item.getFirstName());
         contentValues.put("last_name", item.getLastName());
@@ -54,21 +56,26 @@ public class UserRepository extends BaseRepository<User> {
         return contentValues;
     }
 
-    public User getUserByStudentCode(String studentCode) {
-        ArrayList<User> users = this.find(String.format("student_code = '%s'", studentCode));
-        if (users.size() > 0) {
-            return users.get(0);
+    public UserModel getUserByStudentCode(String studentCode) {
+        ArrayList<UserModel> userModels = this.find(String.format("student_code = '%s'", studentCode));
+        if (userModels.size() > 0) {
+            return userModels.get(0);
         } else {
             return null;
         }
     }
 
-    public ArrayList<ClassModel> getClassByStudentCode(String studentCode, String dayOfWeek) {
+    public ArrayList<ClassModel> getClassByStudentCode(String studentCode, String dayOfWeek, String fromDate) {
         ArrayList<ClassModel> list = new ArrayList<>();
+        Log.d("Query: ", "select day_in_week, time_in_day, room, class_code, cl.course_id from users inner join enrollments er on users.id = er.user_id\n" +
+                "inner join classes cl on er.class_id = cl.id\n" +
+                "where day_in_week like '%" + dayOfWeek + "%'\n" +
+                "and users.student_code = 1 and er.enrolled_date > " + fromDate + " and er.end_date < CURRENT_DATE");
         Cursor cursor = rawQuery("select day_in_week, time_in_day, room, class_code, cl.course_id from users inner join enrollments er on users.id = er.user_id\n" +
                 "inner join classes cl on er.class_id = cl.id\n" +
                 "where day_in_week like '%" + dayOfWeek + "%'\n" +
-                "and users.student_code = 1");
+                "and users.student_code = 1 and er.enrolled_date < " + fromDate + " and er.end_date < CURRENT_DATE");
+
         while (cursor.moveToNext()) {
             ClassModel classModel = new ClassModel();
             classModel.setDayInWeek(cursor.getString(0));
@@ -78,6 +85,8 @@ public class UserRepository extends BaseRepository<User> {
             classModel.setCourseId(cursor.getString(4));
             list.add(classModel);
         }
+
+        cursor.close();
 
         return list;
     }

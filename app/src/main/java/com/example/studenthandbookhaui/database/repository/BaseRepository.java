@@ -3,10 +3,12 @@ package com.example.studenthandbookhaui.database.repository;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.studenthandbookhaui.database.DatabaseHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class BaseRepository<T> {
@@ -19,13 +21,14 @@ public abstract class BaseRepository<T> {
     }
 
     protected abstract T getItemFromCursor(Cursor cursor);
+
     protected abstract ContentValues getContentValues(T item);
 
     public T findById(long id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE id = " + id, null);
         T item = null;
-        if( cursor.moveToFirst() ) {
+        if (cursor.moveToFirst()) {
             item = getItemFromCursor(cursor);
             cursor.close();
         }
@@ -34,7 +37,7 @@ public abstract class BaseRepository<T> {
         return item;
     }
 
-    public ArrayList<T> find(){
+    public ArrayList<T> find() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + tableName, null);
         ArrayList<T> itemList = new ArrayList<>();
@@ -49,8 +52,8 @@ public abstract class BaseRepository<T> {
 
         return itemList;
     }
-    
-    public ArrayList<T> find(String whereQuery){
+
+    public ArrayList<T> find(String whereQuery) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + whereQuery, null);
         ArrayList<T> itemList = new ArrayList<>();
@@ -79,8 +82,19 @@ public abstract class BaseRepository<T> {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = getContentValues(item);
         String selection = "id = ?";
-        String[] selectionArgs = { String.valueOf(id) };
+        String[] selectionArgs = {String.valueOf(id)};
         int rowsAffected = db.update(tableName, values, selection, selectionArgs);
+
+        db.close();
+        return rowsAffected;
+    }
+
+    public int update(ContentValues contentValues, long id) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = "id = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+        int rowsAffected = db.update(tableName, contentValues, selection, selectionArgs);
+        Log.d("rowsAffected: ", contentValues.toString() + " " + Arrays.toString(selectionArgs));
 
         db.close();
         return rowsAffected;
@@ -89,7 +103,7 @@ public abstract class BaseRepository<T> {
     public int delete(long id) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String selection = "id = ?";
-        String[] selectionArgs = { String.valueOf(id) };
+        String[] selectionArgs = {String.valueOf(id)};
         int rowsAffected = db.delete(tableName, selection, selectionArgs);
 
         db.close();

@@ -27,16 +27,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imgUser"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:padding="@dimen/_8sdp"
-            android:src="@drawable/user"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imgUserWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_130sdp">
+
+            <ImageView
+                android:id="@+id/imgUser"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/user"
+                android:contentDescription="User avatar" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/txtName"
@@ -50,7 +58,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgUser"
+            app:layout_constraintTop_toBottomOf="@id/imgUserWrapper"
             tools:layout_editor_absoluteY="201dp" />
 
         <TextView
@@ -77,6 +85,7 @@
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constraint">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -167,12 +176,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/item3"
-                app:layout_constraintTop_toBottomOf="@id/item2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item2">
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -209,12 +218,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/item4"
-                app:layout_constraintTop_toBottomOf="@id/item3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item3">
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -251,12 +260,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/item5"
-                app:layout_constraintTop_toBottomOf="@id/item4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item4">
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -290,7 +299,6 @@
                     app:layout_constraintStart_toEndOf="@+id/imageView5"
                     app:layout_constraintTop_toTopOf="@id/txt" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
