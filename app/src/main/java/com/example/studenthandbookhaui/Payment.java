@@ -49,7 +49,7 @@ public class Payment extends AppCompatActivity {
             updateDebtSum();
             paymentAdapter.notifyDataSetChanged();
         });
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> onBackPressed());
         btnMakePayment.setOnClickListener(v -> makePayment());
         setFinanceList();
     }

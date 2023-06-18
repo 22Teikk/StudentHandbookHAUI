@@ -72,6 +72,7 @@ public class HomeFragment extends Fragment {
     LinearLayout btnCourses, btnResult, btnFinance, btnLearning;
     EditText edtNotes;
     SharedPreferences sharedPreferences;
+    HomePage homePage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,7 +85,9 @@ public class HomeFragment extends Fragment {
         btnResult.setOnClickListener(new Excute());
         btnCourses.setOnClickListener(new Excute());
         sharedPreferences = this.getActivity().getSharedPreferences("saveNotes", Context.MODE_PRIVATE);
-        edtNotes.setText(sharedPreferences.getString("notes", ""));
+        if (sharedPreferences.getString("id", "").compareTo(homePage.getStudentID()) == 0) {
+            edtNotes.setText(sharedPreferences.getString("notes", ""));
+        }
         return view;
     }
 
@@ -92,11 +95,13 @@ public class HomeFragment extends Fragment {
     public void onPause() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("notes", edtNotes.getText().toString());
+        editor.putString("id", homePage.getStudentID());
         editor.commit();
         super.onPause();
     }
 
     private void getWidget(View view){
+        homePage = (HomePage) getActivity();
         btnNotification = view.findViewById(R.id.btnNotification);
         btnCourses = view.findViewById(R.id.layoutCourse);
         btnResult = view.findViewById(R.id.layoutResult);
