@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvArticleName"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_40sdp"
             android:layout_margin="@dimen/_8sdp"
@@ -49,6 +49,9 @@
         android:padding="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:divider="#00ffffff"
+        android:dividerHeight="@dimen/_5sdp"
+        tools:listitem="@layout/lv_result"
         app:layout_constraintTop_toBottomOf="@+id/constraint" />
 
 

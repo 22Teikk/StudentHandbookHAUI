@@ -1,5 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,42 +10,43 @@
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp"
-        android:background="@drawable/header_home_bgr"
+        android:padding="@dimen/_12sdp"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/txtHello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:text="Hello,"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:text="Welcome back,"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_14sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
+            android:id="@+id/txtUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_2sdp"
             android:text="John"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_25sdp"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_14sdp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/txtHello"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
             android:id="@+id/btnNotification"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             android:contentDescription="Notification"
-            android:layout_marginEnd="@dimen/_15sdp"
             android:src="@drawable/ic_notifications"
             app:layout_constraintBottom_toBottomOf="@id/txtHello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/txtHello"
-            app:tint="@color/white" />
+            app:tint="@color/teal_200" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -61,27 +61,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/banner" />
+
+
             <LinearLayout
                 android:id="@+id/layoutCourse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_22sdp"
-                android:gravity="center"
                 android:background="@drawable/cus_shape"
+                android:backgroundTint="#DFFCE9"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:padding="@dimen/_15sdp"
-                app:layout_constraintEnd_toStartOf="@id/layoutResult"
                 app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintEnd_toStartOf="@id/layoutResult"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/banner">
 
                 <ImageView
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="@dimen/_65sdp"
                     android:layout_margin="@dimen/_8sdp"
                     android:contentDescription="Courses"
+                    app:tint="#001A72"
                     android:padding="@dimen/_8sdp"
-                    android:src="@drawable/course"/>
+                    android:src="@drawable/course" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -89,31 +100,34 @@
                     android:gravity="center"
                     android:text="Courses"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
 
+
             <LinearLayout
                 android:id="@+id/layoutResult"
-                android:background="@drawable/cus_shape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_22sdp"
+                android:background="@drawable/cus_shape"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="@dimen/_15sdp"
+                android:backgroundTint="#EFFCDF"
                 app:layout_constraintDimensionRatio="H,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/layoutCourse"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/banner">
 
                 <ImageView
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="@dimen/_65sdp"
                     android:layout_margin="@dimen/_8sdp"
                     android:contentDescription="Courses"
+                    app:tint="#001A72"
                     android:padding="@dimen/_8sdp"
-                    android:src="@drawable/result"/>
+                    android:src="@drawable/result" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -121,7 +135,7 @@
                     android:gravity="center"
                     android:text="Result"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -130,22 +144,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_22sdp"
-                android:gravity="center"
                 android:background="@drawable/cus_shape"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:padding="@dimen/_15sdp"
-                app:layout_constraintEnd_toStartOf="@id/layoutResult"
+                android:backgroundTint="#DFE2FC"
                 app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintEnd_toStartOf="@id/layoutResult"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layoutCourse">
 
                 <ImageView
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="@dimen/_65sdp"
                     android:layout_margin="@dimen/_8sdp"
                     android:contentDescription="Finance"
                     android:padding="@dimen/_8sdp"
-                    android:src="@drawable/finance"/>
+                    app:tint="#001A72"
+                    android:src="@drawable/finance" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -153,16 +169,17 @@
                     android:gravity="center"
                     android:text="Finance"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layoutELearning"
-                android:background="@drawable/cus_shape"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_22sdp"
+                android:background="@drawable/cus_shape"
+                android:backgroundTint="#FCDFDF"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="@dimen/_15sdp"
@@ -172,12 +189,13 @@
                 app:layout_constraintTop_toBottomOf="@id/layoutResult">
 
                 <ImageView
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="@dimen/_65sdp"
                     android:layout_margin="@dimen/_8sdp"
                     android:contentDescription="Elearning"
+                    app:tint="#001A72"
                     android:padding="@dimen/_8sdp"
-                    android:src="@drawable/elearning"/>
+                    android:src="@drawable/elearning" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -185,19 +203,19 @@
                     android:gravity="center"
                     android:text="Learning"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:background="@drawable/cus_note"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_22sdp"
-                android:padding="@dimen/_20sdp"
+                android:background="@drawable/cus_note"
+                android:padding="@dimen/_16sdp"
                 app:layout_constraintEnd_toEndOf="@id/layoutELearning"
                 app:layout_constraintStart_toStartOf="@id/layoutCourse"
-                app:layout_constraintTop_toBottomOf="@id/layoutFinance"
-                android:layout_height="wrap_content">
+                app:layout_constraintTop_toBottomOf="@id/layoutFinance">
 
                 <TextView
                     android:id="@+id/txtNotes"
@@ -206,39 +224,41 @@
                     android:paddingStart="@dimen/_8sdp"
                     android:paddingTop="@dimen/_2sdp"
                     android:paddingEnd="@dimen/_8sdp"
+                    android:paddingBottom="@dimen/_8sdp"
                     android:text="Notes"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_16sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:paddingBottom="@dimen/_8sdp"/>
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <ImageView
+                    android:id="@+id/imgNotes"
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:id="@+id/imgNotes"
-                    android:contentDescription="Notification"
                     android:layout_marginEnd="@dimen/_15sdp"
+                    android:contentDescription="Notification"
                     android:src="@drawable/ic_note"
+                    app:tint="#001A72"
                     app:layout_constraintBottom_toBottomOf="@id/txtNotes"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/txtNotes"
-                    app:tint="@color/black" />
+                    app:layout_constraintTop_toTopOf="@id/txtNotes"/>
 
                 <EditText
                     android:id="@+id/edtNotes"
-                    android:maxLines="5"
-                    android:inputType="textMultiLine"
-                    android:gravity= "top"
                     android:layout_width="match_parent"
-                    android:textColor="@color/black"
                     android:layout_height="@dimen/_100sdp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/cus_edittext"
+                    android:gravity="top"
+                    android:textSize="@dimen/_12sdp"
                     android:hint="You can write some notes in here!"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
                     android:padding="@dimen/_8sdp"
                     android:selectAllOnFocus="false"
                     android:singleLine="false"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txtNotes" />
@@ -247,5 +267,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>

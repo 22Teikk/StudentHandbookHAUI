@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvArticleName"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_40sdp"
             android:layout_margin="@dimen/_8sdp"
@@ -57,8 +57,8 @@
             android:id="@+id/txtNameCourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
-            android:padding="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_4sdp"
             android:text="android"
             android:textColor="#2FD1C5"
             android:textSize="@dimen/_16sdp"

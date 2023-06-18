@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,6 +21,10 @@ import com.example.studenthandbookhaui.HomePage;
 import com.example.studenthandbookhaui.Notification;
 import com.example.studenthandbookhaui.R;
 import com.example.studenthandbookhaui.Result;
+import com.example.studenthandbookhaui.UserID;
+import com.example.studenthandbookhaui.database.DatabaseHelper;
+import com.example.studenthandbookhaui.database.model.UserModel;
+import com.example.studenthandbookhaui.database.repository.UserRepository;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +32,10 @@ import com.example.studenthandbookhaui.Result;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+
+    DatabaseHelper dbHelper;
+    UserRepository userRepository;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,13 +75,19 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        dbHelper = new DatabaseHelper(getContext());
+        userRepository = new UserRepository(dbHelper);
     }
+
     Intent intent;
     ImageView btnNotification;
     LinearLayout btnCourses, btnResult, btnFinance, btnLearning;
     EditText edtNotes;
+    TextView txtUser;
     SharedPreferences sharedPreferences;
     HomePage homePage;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,6 +103,10 @@ public class HomeFragment extends Fragment {
         if (sharedPreferences.getString("id", "").compareTo(homePage.getStudentID()) == 0) {
             edtNotes.setText(sharedPreferences.getString("notes", ""));
         }
+
+        String userId = ((UserID) getActivity().getApplication()).userId;
+        UserModel userModel = userRepository.getUserByStudentCode(userId);
+        txtUser.setText(userModel.getLastName());
         return view;
     }
 
@@ -100,8 +119,9 @@ public class HomeFragment extends Fragment {
         super.onPause();
     }
 
-    private void getWidget(View view){
+    private void getWidget(View view) {
         homePage = (HomePage) getActivity();
+        txtUser = view.findViewById(R.id.txtUser);
         btnNotification = view.findViewById(R.id.btnNotification);
         btnCourses = view.findViewById(R.id.layoutCourse);
         btnResult = view.findViewById(R.id.layoutResult);
@@ -114,7 +134,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            switch (view.getId()){
+            switch (view.getId()) {
                 case R.id.btnNotification:
                     intent = new Intent(getActivity(), Notification.class);
                     startActivity(intent);

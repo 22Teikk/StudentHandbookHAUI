@@ -71,6 +71,7 @@ public class Finance extends AppCompatActivity {
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         formatter.applyPattern("#,###,###");
         ArrayList<FinanceModel> listDebt = financeRepository.getDebtByStudentCode((((UserID) getApplication()).userId));
+        sumDebt = 0;
         for (FinanceModel temp :
                 listDebt) {
 
