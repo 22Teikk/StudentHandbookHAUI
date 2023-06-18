@@ -26,12 +26,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvArticleName"
+            android:id="@+id/tvLectureName"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_40sdp"
             android:layout_margin="@dimen/_8sdp"
             android:padding="@dimen/_8sdp"
-            android:text="E-Learning"
+            android:text="Lecture"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/_15sdp"
@@ -41,28 +41,18 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp"
-        android:text="All classes"
-        android:textColor="@color/text_secondary"
-        android:textSize="@dimen/_14sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraint" />
-
     <ListView
-        android:id="@+id/lvLectureCourses"
+        android:id="@+id/lvLecture"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:divider="#00ffffff"
         android:dividerHeight="@dimen/_5sdp"
-        tools:listitem="@layout/lv_lecture_course"
-        app:layout_constraintTop_toBottomOf="@id/textView7" />
+        tools:listitem="@layout/lv_lecture"
+        app:layout_constraintTop_toBottomOf="@+id/constraint" />
 
     <ImageView
         android:id="@+id/noDataPlaceholder"

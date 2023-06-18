@@ -6,6 +6,8 @@ public class CourseModel extends BaseModel {
     private int courseLoadTheoretical;
     private int courseLoadPractical;
 
+    private ClassModel courseClass;
+
     public CourseModel() {}
 
     public CourseModel(String name, String courseCode, int courseLoadTheoretical, int courseLoadPractical) {
@@ -46,4 +48,13 @@ public class CourseModel extends BaseModel {
     public void setCourseLoadPractical(int courseLoadPractical) {
         this.courseLoadPractical = courseLoadPractical;
     }
+
+    public ClassModel getCourseClass() {
+        return courseClass;
+    }
+
+    public void setCourseClass(ClassModel courseClass) {
+        this.courseClass = courseClass;
+    }
+
 }

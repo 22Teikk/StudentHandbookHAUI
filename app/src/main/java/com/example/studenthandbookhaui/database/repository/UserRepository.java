@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.example.studenthandbookhaui.database.DatabaseHelper;
 import com.example.studenthandbookhaui.database.model.ClassModel;
+import com.example.studenthandbookhaui.database.model.CourseModel;
+import com.example.studenthandbookhaui.database.model.LectureModel;
 import com.example.studenthandbookhaui.database.model.UserModel;
 
 import java.text.SimpleDateFormat;
@@ -66,15 +68,12 @@ public class UserRepository extends BaseRepository<UserModel> {
     }
 
     public ArrayList<ClassModel> getClassByStudentCode(String studentCode, String dayOfWeek, String fromDate) {
+        Log.d("fromDate", fromDate);
         ArrayList<ClassModel> list = new ArrayList<>();
-        Log.d("Query: ", "select day_in_week, time_in_day, room, class_code, cl.course_id from users inner join enrollments er on users.id = er.user_id\n" +
-                "inner join classes cl on er.class_id = cl.id\n" +
-                "where day_in_week like '%" + dayOfWeek + "%'\n" +
-                "and users.student_code = 1 and er.enrolled_date > " + fromDate + " and er.end_date < CURRENT_DATE");
         Cursor cursor = rawQuery("select day_in_week, time_in_day, room, class_code, cl.course_id from users inner join enrollments er on users.id = er.user_id\n" +
                 "inner join classes cl on er.class_id = cl.id\n" +
                 "where day_in_week like '%" + dayOfWeek + "%'\n" +
-                "and users.student_code = 1 and er.enrolled_date < " + fromDate + " and er.end_date < CURRENT_DATE");
+                "and users.student_code = 1 and er.enrolled_date < '" + fromDate + "' and er.end_date > CURRENT_DATE");
 
         while (cursor.moveToNext()) {
             ClassModel classModel = new ClassModel();
@@ -84,6 +83,35 @@ public class UserRepository extends BaseRepository<UserModel> {
             classModel.setRoom(cursor.getString(3));
             classModel.setCourseId(cursor.getString(4));
             list.add(classModel);
+        }
+
+        cursor.close();
+
+        return list;
+    }
+
+    public ArrayList<CourseModel> getLectureCourseByStudentCode(String studentCode) {
+        ArrayList<CourseModel> list = new ArrayList<>();
+
+        Cursor cursor = rawQuery("select cs.id, cs.name, cls.class_code from users u\n" +
+                "inner join enrollments e on u.id = e.user_id\n" +
+                "inner join classes cls on cls.id = e.class_id\n" +
+                "inner join course cs on cls.course_id = cs.id\n" +
+                "inner join lectures l on cs.id = l.course_id\n" +
+                "where u.id = " + studentCode + "\n" +
+                "group by cs.id");
+
+        while(cursor.moveToNext()) {
+            CourseModel courseModel = new CourseModel();
+            ClassModel classModel = new ClassModel();
+
+            Log.d("LectureRepository", cursor.getString(2));
+
+            courseModel.setId(cursor.getLong(0));
+            courseModel.setName(cursor.getString(1));
+            classModel.setClassCode(cursor.getString(2));
+            courseModel.setCourseClass(classModel);
+            list.add(courseModel);
         }
 
         cursor.close();

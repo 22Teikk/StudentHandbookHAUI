@@ -145,7 +145,7 @@ public class ScheduleFragment extends Fragment {
     }
 
     private void setClassList(int dayInWeek) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00", Locale.US);
         classList.clear();
         classList.addAll(userRepository.getClassByStudentCode(homePage.getStudentID() + "", "" + dayInWeek, sdf.format(currentWeek.getTime())));
         if (classList.size() == 0) {

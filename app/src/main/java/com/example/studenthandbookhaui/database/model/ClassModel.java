@@ -7,12 +7,15 @@ public class ClassModel extends BaseModel {
     private String timeInDay;
     private String room;
 
-    public ClassModel(String courseId, String classCourse, String dayInWeek, String timeInDay, String room){
+    private String classCode;
+
+    public ClassModel(String courseId, String classCourse, String dayInWeek, String timeInDay, String room, String classCode){
         this.courseId = courseId;
         this.classCourse = classCourse;
         this.dayInWeek = dayInWeek;
         this.timeInDay = timeInDay;
         this.room = room;
+        this.classCode = classCode;
     }
 
     public ClassModel(){}
@@ -55,5 +58,13 @@ public class ClassModel extends BaseModel {
 
     public void setRoom(String room) {
         this.room = room;
+    }
+
+    public String getClassCode() {
+        return classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
     }
 }

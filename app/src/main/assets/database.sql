@@ -234,7 +234,6 @@ INSERT INTO course VALUES(156,'Tối ưu hóa','IT6095',2,1);
 INSERT INTO course VALUES(157,'Thiết kế phần mềm','IT6096',2,0);
 INSERT INTO course VALUES(158,'Phân tích và đặc tả yêu cầu phần mềm','IT6097',2,0);
 CREATE TABLE lectures
-
 (
 
     id        INTEGER PRIMARY KEY,
@@ -244,6 +243,10 @@ CREATE TABLE lectures
     name      TEXT
 
 );
+
+INSERT INTO lectures (id, course_id, name) VALUES (1, 150, 'Lecture 1 - Android Introduction');
+INSERT INTO lectures (id, course_id, name) VALUES (2, 150, 'Lecture 2 - Android Activity');
+
 CREATE TABLE lessons
 
 (
@@ -253,6 +256,12 @@ CREATE TABLE lessons
     lecture_id INTEGER NOT NULL
 
 );
+
+INSERT INTO lessons (id, lecture_id) VALUES (1, 1);
+INSERT INTO lessons (id, lecture_id) VALUES (2, 1);
+INSERT INTO lessons (id, lecture_id) VALUES (3, 2);
+INSERT INTO lessons (id, lecture_id) VALUES (4, 2);
+
 CREATE TABLE quizzes
 
 (
@@ -268,6 +277,10 @@ CREATE TABLE quizzes
     answers   TEXT
 
 );
+
+INSERT INTO quizzes (id, lesson_id, name, question, answers) values (1, 2, 'Android Activity', 'Một thành phần cơ bản của ứng dụng Android, đại diện cho một màn hình giao diện người dùng.', 'activity');
+INSERT INTO quizzes (id, lesson_id, name, question, answers) values (2, 4, 'Android Recycle View', 'Một thành phần để hiển thị danh sách dữ liệu lặp lại trong ứng dụng Android.', 'list view');
+
 CREATE TABLE articles
 
 (
@@ -281,6 +294,10 @@ CREATE TABLE articles
     content   TEXT
 
 );
+
+INSERT INTO articles VALUES(1,1, 'Android activity','<h1>Tìm hiểu về Activity và vòng đời Activity</h1> <h2>Giới thiệu về Activity trong Android</h2> <p>Lớp Activity là thành phần quan trọng nhất của ứng dụng Android, cách mà chúng hoạt động tạo thành nền tảng cơ bản của mô hình lập trình ứng dụng. Android khởi chạy một ứng dụng thông thường bằng kích hoạt một Activity tương ứng với vòng đời cụ thể của nó trong quá trình hoạt động.</p> <p>Thường một Activity cung cấp một của sổ, ở đó ứng dụng sẽ dựng các thành phần UI (User Interface - giao diện người dùng). Mặc định cửa sổ này là đầy màn hình thiết bị, nhưng có một vài trường hợp riêng sẽ nhỏ hơn và nổi phía trên cửa sổ khác.</p> <p>Hầu hết các ứng dụng đều sử dụng nhiều màn hình khác nhau, có nghĩa nó sẽ phải có nhiều Activity khác nhau. Khi một Activity chỉ định là Activity chính, nó sẽ là màn hình đầu tiên khi khởi chạy ứng dụng. Một Activity này lại có thể gọi và kích hoạt một Activity khác. Ví dụ một Activity hiện thị danh sách các ghi chú, nó gọi một Activity khác để xem nội dung chi tiết của ghi chú.</p> <h2>Activty</h2> <p>Xem hình trên, ứng dụng khởi chạy với Activity - A, Activity - A kích hoạt Activity - B bằng Intent, Activity - B hoạt động có thể gọi Activity - C và khi bấm nút Back của điện thoạt Activity được gọi sẽ đóng và trở này Activity gọi nó</p>');
+INSERT INTO articles VALUES(2,3, 'Android recycle view','<h1>Tìm hiểu về RecyclerView trong Android</h1> <h2>Giới thiệu về RecyclerView</h2> <p>RecyclerView là một thành phần quan trọng trong Android để hiển thị danh sách dữ liệu có thể cuộn. Nó là một cải tiến so với ListView truyền thống vì cung cấp khả năng linh hoạt hơn trong việc tạo giao diện danh sách phức tạp và quản lý dữ liệu hiệu quả hơn.</p> <p>RecyclerView sử dụng mô hình ViewHolder để tái sử dụng các phần tử giao diện đã được tạo. Điều này giúp tối ưu hóa hiệu suất bằng cách chỉ cập nhật và vẽ lại các phần tử hiển thị thực sự trên màn hình.</p> <h2>RecyclerView</h2> <p>Xem hình trên, RecyclerView được sử dụng để hiển thị danh sách dữ liệu. Các phần tử giao diện trong danh sách được tạo và quản lý thông qua các ViewHolder. Các phần tử này có thể tái sử dụng khi cần thiết, giúp tối ưu hóa hiệu suất.</p> <h2>Vòng đời một RecyclerView</h2> <p>RecyclerView không có vòng đời riêng như Activity, nhưng nó được quản lý thông qua các Adapter và LayoutManager.</p> <p>Adapter là một lớp dùng để cung cấp dữ liệu cho RecyclerView. Nó đóng vai trò là cầu nối giữa dữ liệu và giao diện hiển thị. Khi dữ liệu thay đổi, Adapter sẽ thông báo cho RecyclerView để cập nhật giao diện.</p> <p>LayoutManager là một lớp quyết định cách các phần tử giao diện trong RecyclerView được sắp xếp và hiển thị trên màn hình. Nó xác định kiểu hiển thị của RecyclerView, chẳng hạn như danh sách dọc, danh sách ngang, lưới, v.v.</p> <p>Vòng đời của RecyclerView phụ thuộc vào vòng đời của Adapter và LayoutManager. Khi dữ liệu thay đổi, Adapter sẽ thông báo cho RecyclerView và yêu cầu cập nhật giao diện. LayoutManager sau đó sẽ xác định các phần tử giao diện cần được hiển thị và cập nhật giao diện.</p> <p>Bạn có thể tuỳ chỉnh Adapter và LayoutManager theo nhu cầu của mình để tạo giao diện danh sách phức tạp và xử lý dữ liệu theo cách mong muốn.</p>');
+
 CREATE TABLE class_instructors
 
 (
@@ -309,20 +326,20 @@ CREATE TABLE enrollments (
     debt_paid_date TEXT
 
 , regular_score TEXT, progress_score TEXT, exam_score TEXT);
-INSERT INTO enrollments VALUES(1,1,4,2500000,'2023-05-05 16:43:58','2023-06-05 19:43:58','2023-06-05 19:43:58',1,2,3);
-INSERT INTO enrollments VALUES(2,1,2,2500000,'2023-05-05 16:43:58','2023-06-05 19:43:58','2023-06-05 19:43:58',3,4,5);
-INSERT INTO enrollments VALUES(3,4,9,1200000,'2023-05-10 10:25:17','2023-06-10 15:40:52','2023-06-10 15:40:52',4,5,6);
-INSERT INTO enrollments VALUES(4,1,3,2500000,'2023-05-05 16:43:58','2023-06-05 19:43:58',NULL,3,4,5);
-INSERT INTO enrollments VALUES(5,4,9,1200000,'2023-05-10 10:25:17','2023-06-10 15:40:52','2023-06-10 15:40:52',4,5,6);
+INSERT INTO enrollments VALUES(1,1,4,2500000,'2023-05-05 16:43:58','2023-07-20 19:43:58','2023-09-12 19:43:58',1,2,3);
+INSERT INTO enrollments VALUES(2,1,2,2500000,'2023-05-05 16:43:58','2023-07-05 19:43:58','2023-06-05 19:43:58',3,4,5);
+INSERT INTO enrollments VALUES(3,4,9,1200000,'2023-05-10 10:25:17','2023-08-10 15:40:52','2023-06-10 15:40:52',4,5,6);
+INSERT INTO enrollments VALUES(4,1,3,2500000,'2023-05-05 16:43:58','2023-07-05 19:43:58',NULL,3,4,5);
+INSERT INTO enrollments VALUES(5,4,9,1200000,'2023-05-10 10:25:17','2023-09-10 15:40:52','2023-06-10 15:40:52',4,5,6);
 INSERT INTO enrollments VALUES(6,2,3,800000,'2023-05-11 12:55:30','2023-06-11 18:20:15','2023-06-11 18:20:15',7,8,9);
 INSERT INTO enrollments VALUES(7,5,1,500000,'2023-05-12 14:45:22','2023-06-13 09:35:40','2023-06-13 09:35:40',10,1,2);
 INSERT INTO enrollments VALUES(8,3,5,0,'2023-06-14 16:10:05','2023-07-15 10:55:27','2023-06-15 10:55:27',3,4,5);
 INSERT INTO enrollments VALUES(9,1,7,1500000,'2023-06-16 18:20:41','2023-07-16 23:05:13',NULL,6,7,8);
 INSERT INTO enrollments VALUES(10,4,6,900000,'2023-06-17 20:30:12','2023-07-18 09:15:29','2023-06-18 09:15:29',9,10,1);
 INSERT INTO enrollments VALUES(11,2,8,600000,'2023-06-19 22:40:09','2023-07-20 16:30:50','2023-06-20 16:30:50',2,3,4);
-INSERT INTO enrollments VALUES(12,5,4,2000000,'2023-06-21 09:50:35','2023-07-21 15:55:20','2023-06-21 15:55:20',5,6,7);
-INSERT INTO enrollments VALUES(13,3,2,1800000,'2023-06-22 11:15:48','2023-07-23 08:10:37','2023-06-23 08:10:37',8,9,10);
-INSERT INTO enrollments VALUES(14,1,3,800000,'2023-06-24 13:30:57','2023-07-24 17:45:59','2023-06-24 17:45:59',4,7,9);
+INSERT INTO enrollments VALUES(12,5,4,2000000,'2023-06-1 09:50:35','2023-07-21 15:55:20','2023-06-21 15:55:20',5,6,7);
+INSERT INTO enrollments VALUES(13,3,2,1800000,'2023-06-2 11:15:48','2023-07-23 08:10:37','2023-06-23 08:10:37',8,9,10);
+INSERT INTO enrollments VALUES(14,2,3,800000,'2023-06-24 13:30:57','2023-07-24 17:45:59','2023-06-24 17:45:59',4,7,9);
 CREATE TABLE classes
 
 (
@@ -343,7 +360,7 @@ CREATE TABLE classes
 INSERT INTO classes VALUES(1,45,'20222IT6076001','1','1,2,3','307 - A');
 INSERT INTO classes VALUES(2,87,'20222IT6076002','1,4','2,3,4','404 - B');
 INSERT INTO classes VALUES(3,113,'20222IT6076003','2','3,4,5','208 - A');
-INSERT INTO classes VALUES(4,23,'20222IT6076004','2,3','4,5,6','512 - C');
+INSERT INTO classes VALUES(4,150,'20222IT6076004','2,3','4,5,6','512 - C');
 INSERT INTO classes VALUES(5,157,'20222IT6076005','3','5,6,7','601 - A');
 INSERT INTO classes VALUES(6,92,'20222IT6076006','3,6','6,7,8','303 - C');
 INSERT INTO classes VALUES(7,6,'20222IT6076007','4','7,8,9','105 - A');
@@ -372,11 +389,11 @@ CREATE TABLE notifications
     created_at TEXT
 
 );
-INSERT INTO notifications VALUES(1, 'You have new message','Message','2023-06-14 14:35:00');
-INSERT INTO notifications VALUES(2, 'You have new email from CEO', 'Email', '2023-06-14 14:40:00');
+INSERT INTO notifications VALUES(1, 'Khảo Sát Sinh Viên Về Hoạt Động Giảng Dạy','Khảo sát','2023-06-14 14:35:00');
+INSERT INTO notifications VALUES(2, 'Phiếu Khảo Sát Thông Tin Phục Vụ Công Tác Phòng Chống Dịch Bệnh Covid 19', 'Khảo sát', '2023-06-14 14:40:00');
 INSERT INTO notifications VALUES(3, 'Update application', 'Update', '2023-06-14 15:00:00');
 INSERT INTO notifications VALUES(4, 'Thank for Login', 'Event', '2023-06-14 17:15:00');
-INSERT INTO notifications VALUES(5, 'You will have meeting tomorrow', 'Reminder', '2023-06-14 18:00:00');
+INSERT INTO notifications VALUES(5, 'You will have class tomorrow', 'Reminder', '2023-06-14 18:00:00');
 INSERT INTO notifications VALUES(6, 'Your application was updated', 'Update', '2023-06-15 09:00:00');
 CREATE TABLE user_notifications(
 
