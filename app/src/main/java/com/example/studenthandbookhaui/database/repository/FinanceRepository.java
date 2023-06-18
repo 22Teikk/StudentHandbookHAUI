@@ -34,7 +34,8 @@ public class FinanceRepository extends BaseRepository<FinanceModel> {
                 "FROM enrollments \n" +
                 "INNER JOIN classes ON enrollments.class_id = classes.id\n" +
                 "INNER JOIN course on classes.course_id = course.id\n" +
-                "WHERE debt_paid_date NOT NULL AND user_id = " + studentCode);
+                "WHERE debt_paid_date NOT NULL AND user_id = " + studentCode + " \n" +
+                "ORDER BY debt_paid_date DESC");
 
         while (cursor.moveToNext()) {
             FinanceModel financeModel = new FinanceModel();
